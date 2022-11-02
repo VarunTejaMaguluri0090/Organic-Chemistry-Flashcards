@@ -1,8 +1,8 @@
 # CMPE272-Team6-Final-Project
 
 #Running Locally
-Install dependencies:
-Install Python
+1. Install dependencies:
+2. Install Python
 Add python as environment variable windows
 To install pip, securely download get-pip.py
 Run python get-pip.pyin terminal
