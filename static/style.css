@@ -1,10 +1,10 @@
 .toggleSelected {
-    background-color: #62b06b;
-    color: #ffffff;
+    background-color: azure;
+    color: black;
 }
 
 textarea {
-    font-family: monospace;
+    font-family: sans-serif;
 }
 
 .cardContent h4 {
