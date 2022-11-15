@@ -1,14 +1,14 @@
 import os
 import sqlite3
-from flask import Flask, request, session, g, redirect, url_for, abort, \
-    render_template, flash
+from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
+from forms.RegistrationForm import RegistrationForm
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 
 # Load default config and override config from an environment variable
 app.config.update(dict(
-    DATABASE=os.path.join(app.root_path, 'db', 'cards.db'),
+    DATABASE=os.path.join(app.root_path, 'db', 'cards-jwasham.db'),
     SECRET_KEY='development key',
     USERNAME='admin',
     PASSWORD='default'
@@ -97,7 +97,8 @@ def filter_cards(filter_name):
         return redirect(url_for('cards'))
 
     db = get_db()
-    fullquery = "SELECT id, type, front, back, known FROM cards " + query + " ORDER BY id DESC"
+    fullquery = "SELECT id, type, front, back, known FROM cards " + \
+        query + " ORDER BY id DESC"
     cur = db.execute(fullquery)
     cards = cur.fetchall()
     return render_template('cards.html', cards=cards, filter_name=filter_name)
@@ -268,6 +269,18 @@ def login():
             session.permanent = True  # stay logged in
             return redirect(url_for('cards'))
     return render_template('login.html', error=error)
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register_user():
+    #c = get_cursor()
+    form = RegistrationForm()
+    if form.validate_on_submit():        
+        print("user saved")
+        flash("You are registered", "success")
+        return redirect(url_for("login"))
+
+    return render_template("register.html", form=form)
 
 
 @app.route('/logout')
