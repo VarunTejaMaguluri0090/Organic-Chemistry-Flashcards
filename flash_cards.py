@@ -8,7 +8,7 @@ app.config.from_object(__name__)
 
 # Load default config and override config from an environment variable
 app.config.update(dict(
-    DATABASE=os.path.join(app.root_path, 'db', 'cards-jwasham.db'),
+    DATABASE=os.path.join(app.root_path, 'db', 'project.db'),
     SECRET_KEY='development key',
     USERNAME='admin',
     PASSWORD='default'
@@ -22,6 +22,7 @@ def connect_db():
     return rv
 
 
+@app.before_first_request
 def init_db():
     db = get_db()
     with app.open_resource('data/schema.sql', mode='r') as f:
@@ -275,11 +276,18 @@ def login():
 def register_user():
     #c = get_cursor()
     form = RegistrationForm()
-    if form.validate_on_submit():        
-        print("user saved")
-        flash("You are registered", "success")
-        return redirect(url_for("login"))
-
+    if form.validate_on_submit(): 
+        db = get_db()
+        db.execute('INSERT INTO users (username, email, description, location, password) VALUES (?, ?, ?, ?, ?)',
+               [request.form['username'],
+                request.form['email'],
+                request.form['description'],
+                request.form['location'],
+                request.form['password'],
+                ])
+        db.commit()
+        flash('You are registered. Please proceed to login.',"success")
+        return redirect(url_for('login')) 
     return render_template("register.html", form=form)
 
 

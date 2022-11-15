@@ -23,12 +23,13 @@
                         <ul class="nav navbar-nav navbar-right">
                             {% if not session.logged_in %}
                                 <li><a href="{{ url_for('login') }}">Login</a></li>
+                                <li><a href="{{ url_for('register_user') }}">Sign Up</a></li>
                             {% else %}
                                 <li><a href="{{ url_for('cards') }}">My Flashcards</a></li>
                                 <li><a href="{{ url_for('definitions') }}">Definitions</a></li>
                                 <li><a href="{{ url_for('formulae') }}">Formulae</a></li>
                                 <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-                                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                                <li><a href="{{ url_for('logout') }}">Logout</a></li>                                
                             {% endif %}
                         </ul>
                     </div>
