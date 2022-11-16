@@ -5,7 +5,7 @@ from forms.RegistrationForm import RegistrationForm
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-
+resultForTotalCards = 0
 # Load default config and override config from an environment variable
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'db', 'project.db'),
@@ -64,8 +64,30 @@ def index():
         return redirect(url_for('login'))
 
 
+def total_Cards():
+    
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+
+    
+
+    db = get_db()
+    query = '''
+        SELECT COUNT(*) FROM cards
+    '''
+    if not query:
+        return redirect(url_for('cards'))
+    
+    cur = db.execute(query)
+    resultForTotalCards = cur.fetchone()[0]
+    print("Total cards")
+    print(resultForTotalCards)
+    render_template('cards.html', resultForTotalCards=resultForTotalCards)
+
+
 @app.route('/cards')
 def cards():
+    
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     db = get_db()
@@ -74,13 +96,35 @@ def cards():
         FROM cards
         ORDER BY id DESC
     '''
+    
     cur = db.execute(query)
     cards = cur.fetchall()
-    return render_template('cards.html', cards=cards, filter_name="all")
+    
+    dbForTotalCardsCount = get_db()
+    queryForTotalCardsCount = '''
+        SELECT COUNT(*) FROM cards
+    '''
+    curForTotalCardsCount = dbForTotalCardsCount.execute(queryForTotalCardsCount)
+    resultForTotalCards = curForTotalCardsCount.fetchone()[0]
+    print("Total cards")
+    print(resultForTotalCards)
+    
+    dbForTotalKnownCount = get_db()
+    queryForTotalKnownCount = '''
+        SELECT COUNT(*) FROM cards
+        WHERE known = 1
+    '''
+    curForTotalKnownCount = dbForTotalKnownCount.execute(queryForTotalKnownCount)
+    resultForTotalKnownCount = curForTotalKnownCount.fetchone()[0]
+    print("Total known cards")
+    print(resultForTotalKnownCount)
+    
+    return render_template('cards.html', cards=cards, filter_name="all",resultForTotalCardsCount = resultForTotalCards,resultForKnownCards= resultForTotalKnownCount)
 
 
 @app.route('/filter_cards/<filter_name>')
 def filter_cards(filter_name):
+    total_Cards()
     if not session.get('logged_in'):
         return redirect(url_for('login'))
 
@@ -91,6 +135,7 @@ def filter_cards(filter_name):
         "known":    "where known = 1",
         "unknown":  "where known = 0",
     }
+    
 
     query = filters.get(filter_name)
 
@@ -102,7 +147,26 @@ def filter_cards(filter_name):
         query + " ORDER BY id DESC"
     cur = db.execute(fullquery)
     cards = cur.fetchall()
-    return render_template('cards.html', cards=cards, filter_name=filter_name)
+    
+    dbForTotalCardsCount = get_db()
+    queryForTotalCardsCount = '''
+        SELECT COUNT(*) FROM cards
+    '''
+    curForTotalCardsCount = dbForTotalCardsCount.execute(queryForTotalCardsCount)
+    resultForTotalCards = curForTotalCardsCount.fetchone()[0]
+    print("Total cards")
+    print(resultForTotalCards)
+    
+    dbForTotalKnownCount = get_db()
+    queryForTotalKnownCount = '''
+        SELECT COUNT(*) FROM cards
+        WHERE known = 1
+    '''
+    curForTotalKnownCount = dbForTotalKnownCount.execute(queryForTotalKnownCount)
+    resultForTotalKnownCount = curForTotalKnownCount.fetchone()[0]
+    print("Total known cards")
+    print(resultForTotalKnownCount)
+    return render_template('cards.html', cards=cards, filter_name=filter_name,resultForTotalCardsCount = resultForTotalCards,resultForKnownCards= resultForTotalKnownCount)
 
 
 @app.route('/add', methods=['POST'])
@@ -300,3 +364,4 @@ def logout():
 
 if __name__ == '__main__':
     app.run()
+    
