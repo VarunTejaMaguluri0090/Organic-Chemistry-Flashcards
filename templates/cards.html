@@ -36,7 +36,7 @@
     </div>
 
     <div class="page-header">
-        <h2>{{ cards|length }} Card{{ '' if (cards|length == 1) else 's' }}</h2>
+        <h2 style="color: #FFFFFF">{{ cards|length }} Card{{ '' if (cards|length == 1) else 's' }}{{ ' is available' if (cards|length == 1) else ' are available' }}</h2>
     </div>
     <div class="btn-group btn-group-md" role="group" aria-label="filters">
         <a href="{{ url_for('filter_cards', filter_name="all") }}" class="btn btn-{{ "primary" if filter_name == "all" else "default" }}">All</a>
@@ -69,7 +69,7 @@
         {% else %}
             <tr>
                 <td>
-                    <em>No Flashcards to show</em>
+                    <em style="color: #FFFFFF">No Flashcards to show</em>
                 </td>
             </tr>
         {% endfor %}
