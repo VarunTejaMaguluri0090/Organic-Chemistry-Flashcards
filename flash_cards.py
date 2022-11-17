@@ -3,6 +3,9 @@ import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from forms.RegistrationForm import RegistrationForm
 
+
+
+
 app = Flask(__name__)
 app.config.from_object(__name__)
 resultForTotalCards = 0

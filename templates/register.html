@@ -5,7 +5,7 @@
       <h1>Register</h1><hr>
       <form method="POST" action="{{ url_for('register_user') }}">
         {{ form.csrf_token }}      
-        <div class="form-group">
+        {% comment %} <div class="form-group">
           {{ form.username.label }}
           {{ form.username(class="form-control") }}       
         </div>
@@ -32,7 +32,7 @@
         <hr>
         <div class="form-group">
           {{ form.submit(class="btn btn-primary form-control") }}
-        </div>
+        </div> {% endcomment %}
       </form>
     </div>
   </div>
