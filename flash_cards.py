@@ -9,12 +9,13 @@ from forms.RegistrationForm import RegistrationForm
 app = Flask(__name__)
 app.config.from_object(__name__)
 resultForTotalCards = 0
+userNameToDisplay = ''
 # Load default config and override config from an environment variable
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'db', 'project.db'),
     SECRET_KEY='development key',
-    USERNAME='admin',
-    PASSWORD='default'
+    USERNAME='',
+    PASSWORD=''
 ))
 app.config.from_envvar('CARDS_SETTINGS', silent=True)
 
@@ -121,8 +122,10 @@ def cards():
     resultForTotalKnownCount = curForTotalKnownCount.fetchone()[0]
     print("Total known cards")
     print(resultForTotalKnownCount)
-    
-    return render_template('cards.html', cards=cards, filter_name="all",resultForTotalCardsCount = resultForTotalCards,resultForKnownCards= resultForTotalKnownCount)
+    print("Printed Actuual name:")
+    userNameToDisplay = app.config['USERNAME']
+    print(userNameToDisplay)
+    return render_template('cards.html', cards=cards, filter_name="all",resultForTotalCardsCount = resultForTotalCards,resultForKnownCards= resultForTotalKnownCount,userNameToDisplayForApp=userNameToDisplay)
 
 
 @app.route('/filter_cards/<filter_name>')
@@ -327,7 +330,50 @@ def mark_known(card_id, card_type):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
+    userNameToSend = ''
+    passwordToSend = ''
     if request.method == 'POST':
+        db = get_db()
+        
+        
+        queryToGetUserName = """\
+            SELECT username
+            FROM users
+            WHERE username = ? 
+            LIMIT 1
+            """
+        userName = request.form['username']
+       
+        for row in db.execute(queryToGetUserName, (userName,)).fetchall():
+            for username in row:
+                print(username,end=' ')
+                userNameToSend = username
+                print()
+                
+        queryToGetPassword = """\
+            SELECT password
+            FROM users
+            WHERE password = ?
+            LIMIT 1
+            """
+        password = request.form['password']
+       
+        for row in db.execute(queryToGetPassword, (password,)).fetchall():
+            for passwordToCheck in row:
+                print(passwordToCheck,end=' ')
+                passwordToSend = passwordToCheck
+                print()
+        print(userNameToSend)
+        print(passwordToSend)
+        # userNameToDisplay = userNameToSend
+        # print("Printed the name:")
+        # print(userNameToDisplay)
+       
+        app.config.update(dict(DATABASE=os.path.join(app.root_path, 'db', 'project.db'),
+                               SECRET_KEY='development key',
+                               USERNAME=userNameToSend,
+                               PASSWORD=passwordToSend))
+        app.config.from_envvar('CARDS_SETTINGS', silent=True)
         if request.form['username'] != app.config['USERNAME']:
             error = 'Invalid username or password!'
         elif request.form['password'] != app.config['PASSWORD']:
@@ -336,7 +382,10 @@ def login():
             session['logged_in'] = True
             session.permanent = True  # stay logged in
             return redirect(url_for('cards'))
+ 
+
     return render_template('login.html', error=error)
+
 
 
 @app.route("/register", methods=["GET", "POST"])

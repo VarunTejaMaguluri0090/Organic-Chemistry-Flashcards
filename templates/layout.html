@@ -30,10 +30,15 @@
                                 <li><a href="{{ url_for('definitions') }}">Definitions</a></li>
                                 <li><a href="{{ url_for('formulae') }}">Formulae</a></li>
                                 <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-                                <li><a href="{{ url_for('logout') }}">Logout</a></li>                                
-                            {% endif %}
+                                <li><a href="{{ url_for('logout') }}">Logout</a></li>  
+                                
+                                {% endif %}
                         </ul>
+
                     </div>
+                    <h2 style="float: right; width: 20%; text-align: right;color: #FF0000;margin: 20px;">
+                        <span class="red"> {{userNameToDisplayForApp}}</span>
+                    </h2>
                 </nav>
 
                 {% for message in get_flashed_messages() %}
