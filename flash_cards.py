@@ -10,12 +10,13 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 resultForTotalCards = 0
 userNameToDisplay = ''
+IDToPass = ''
 # Load default config and override config from an environment variable
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'db', 'project.db'),
     SECRET_KEY='development key',
     USERNAME='',
-    PASSWORD=''
+    PASSWORD='',USERID=''
 ))
 app.config.from_envvar('CARDS_SETTINGS', silent=True)
 
@@ -96,19 +97,25 @@ def cards():
         return redirect(url_for('login'))
     db = get_db()
     query = '''
-        SELECT id, type, front, back, known
+        SELECT id, type, front, back, known,userid
         FROM cards
+        WHERE userid = ?
         ORDER BY id DESC
+       
     '''
-    
-    cur = db.execute(query)
+    print("USERID IN CARDS")
+    print(app.config['USERID'])
+    IDToPass = str(app.config['USERID'])
+    print(IDToPass)
+    cur = db.execute(query,(IDToPass))
     cards = cur.fetchall()
     
     dbForTotalCardsCount = get_db()
     queryForTotalCardsCount = '''
         SELECT COUNT(*) FROM cards
+        WHERE userid = ?
     '''
-    curForTotalCardsCount = dbForTotalCardsCount.execute(queryForTotalCardsCount)
+    curForTotalCardsCount = dbForTotalCardsCount.execute(queryForTotalCardsCount,(IDToPass))
     resultForTotalCards = curForTotalCardsCount.fetchone()[0]
     print("Total cards")
     print(resultForTotalCards)
@@ -116,9 +123,9 @@ def cards():
     dbForTotalKnownCount = get_db()
     queryForTotalKnownCount = '''
         SELECT COUNT(*) FROM cards
-        WHERE known = 1
+        WHERE known = 1 AND userid = ?
     '''
-    curForTotalKnownCount = dbForTotalKnownCount.execute(queryForTotalKnownCount)
+    curForTotalKnownCount = dbForTotalKnownCount.execute(queryForTotalKnownCount,(IDToPass))
     resultForTotalKnownCount = curForTotalKnownCount.fetchone()[0]
     print("Total known cards")
     print(resultForTotalKnownCount)
@@ -135,11 +142,11 @@ def filter_cards(filter_name):
         return redirect(url_for('login'))
 
     filters = {
-        "all":      "where 1 = 1",
-        "definitions":  "where type = 1",
-        "formulae":     "where type = 2",
-        "known":    "where known = 1",
-        "unknown":  "where known = 0",
+        "all":      "where 1 = 1 and userid = ?",
+        "definitions":  "where type = 1 and userid = ?",
+        "formulae":     "where type = 2 and userid = ?",
+        "known":    "where known = 1 and userid = ?",
+        "unknown":  "where known = 0 and userid = ?",
     }
     
 
@@ -150,15 +157,21 @@ def filter_cards(filter_name):
 
     db = get_db()
     fullquery = "SELECT id, type, front, back, known FROM cards " + \
-        query + " ORDER BY id DESC"
-    cur = db.execute(fullquery)
+        query + "  ORDER BY id DESC "
+    print("ID in FILTER")
+    IDToPass = str(app.config['USERID'])
+    print(IDToPass)
+    userNameToDisplay = app.config['USERNAME']
+    print(userNameToDisplay)
+    cur = db.execute(fullquery,(IDToPass))
     cards = cur.fetchall()
     
     dbForTotalCardsCount = get_db()
     queryForTotalCardsCount = '''
         SELECT COUNT(*) FROM cards
+        WHERE userid = ?
     '''
-    curForTotalCardsCount = dbForTotalCardsCount.execute(queryForTotalCardsCount)
+    curForTotalCardsCount = dbForTotalCardsCount.execute(queryForTotalCardsCount,(IDToPass))
     resultForTotalCards = curForTotalCardsCount.fetchone()[0]
     print("Total cards")
     print(resultForTotalCards)
@@ -166,9 +179,9 @@ def filter_cards(filter_name):
     dbForTotalKnownCount = get_db()
     queryForTotalKnownCount = '''
         SELECT COUNT(*) FROM cards
-        WHERE known = 1
+        WHERE known = 1 AND userid = ?
     '''
-    curForTotalKnownCount = dbForTotalKnownCount.execute(queryForTotalKnownCount)
+    curForTotalKnownCount = dbForTotalKnownCount.execute(queryForTotalKnownCount,(IDToPass))
     resultForTotalKnownCount = curForTotalKnownCount.fetchone()[0]
     print("Total known cards")
     print(resultForTotalKnownCount)
@@ -180,8 +193,11 @@ def add_card():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     db = get_db()
-    db.execute('INSERT INTO cards (type, front, back) VALUES (?, ?, ?)',
-               [request.form['type'],
+    IDToPass = str(app.config['USERID'])
+    print(IDToPass)
+    db.execute('INSERT INTO cards (userid, type, front, back) VALUES (?,?, ?, ?)',
+               
+               [IDToPass,request.form['type'],
                 request.form['front'],
                 request.form['back']
                 ])
@@ -195,12 +211,14 @@ def edit(card_id):
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     db = get_db()
+    IDToPass = str(app.config['USERID'])
+    print(IDToPass)
     query = '''
         SELECT id, type, front, back, known
         FROM cards
-        WHERE id = ?
+        WHERE id = ? AND userid = ?
     '''
-    cur = db.execute(query, [card_id])
+    cur = db.execute(query, [card_id,IDToPass])
     card = cur.fetchone()
     return render_template('edit.html', card=card)
 
@@ -212,6 +230,8 @@ def edit_card():
     selected = request.form.getlist('known')
     known = bool(selected)
     db = get_db()
+    IDToPass = str(app.config['USERID'])
+    print(IDToPass)
     command = '''
         UPDATE cards
         SET
@@ -219,7 +239,7 @@ def edit_card():
           front = ?,
           back = ?,
           known = ?
-        WHERE id = ?
+        WHERE id = ? AND userid = ?
     '''
     db.execute(command,
                [request.form['type'],
@@ -227,7 +247,7 @@ def edit_card():
                 request.form['back'],
                 known,
                 request.form['card_id']
-                ])
+                ,IDToPass])
     db.commit()
     flash('Card saved.')
     return redirect(url_for('cards'))
@@ -238,7 +258,9 @@ def delete(card_id):
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     db = get_db()
-    db.execute('DELETE FROM cards WHERE id = ?', [card_id])
+    IDToPass = str(app.config['USERID'])
+    print(IDToPass)
+    db.execute('DELETE FROM cards WHERE id = ? AND userid = ?', [card_id,IDToPass])
     db.commit()
     flash('Card deleted.')
     return redirect(url_for('cards'))
@@ -261,6 +283,8 @@ def formulae(card_id=None):
 
 
 def memorize(card_type, card_id):
+    print("CARDID")
+    print(card_id)
     if card_type == "definitions":
         type = 1
     elif card_type == "formulae":
@@ -284,6 +308,8 @@ def memorize(card_type, card_id):
 
 def get_card(type):
     db = get_db()
+    IDToPass = str(app.config['USERID'])
+    print(IDToPass)
 
     query = '''
       SELECT
@@ -291,28 +317,30 @@ def get_card(type):
       FROM cards
       WHERE
         type = ?
-        and known = 0
+        and known = 0 and userid = ?
       ORDER BY RANDOM()
       LIMIT 1
     '''
 
-    cur = db.execute(query, [type])
+    cur = db.execute(query, [type,IDToPass])
     return cur.fetchone()
 
 
 def get_card_by_id(card_id):
     db = get_db()
+    IDToPass = str(app.config['USERID'])
+    print(IDToPass)
 
     query = '''
       SELECT
         id, type, front, back, known
       FROM cards
       WHERE
-        id = ?
+        id = ? and userid = ?
       LIMIT 1
     '''
 
-    cur = db.execute(query, [card_id])
+    cur = db.execute(query, [card_id,IDToPass])
     return cur.fetchone()
 
 
@@ -321,7 +349,9 @@ def mark_known(card_id, card_type):
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     db = get_db()
-    db.execute('UPDATE cards SET known = 1 WHERE id = ?', [card_id])
+    IDToPass = str(app.config['USERID'])
+    print(IDToPass)
+    db.execute('UPDATE cards SET known = 1 WHERE id = ? and userid = ?', [card_id,IDToPass])
     db.commit()
     flash('Card marked as known.')
     return redirect(url_for(card_type))
@@ -332,6 +362,7 @@ def login():
     error = None
     userNameToSend = ''
     passwordToSend = ''
+    userIDToSend = ''
     if request.method == 'POST':
         db = get_db()
         
@@ -365,14 +396,34 @@ def login():
                 print()
         print(userNameToSend)
         print(passwordToSend)
+        
+        queryToGetUserID = """\
+            SELECT id
+            FROM users
+            WHERE username = ?
+            LIMIT 1
+            """
+       
+       
+        for row in db.execute(queryToGetUserID, (userName,)).fetchall():
+            for userIDCheck in row:
+                print(userIDCheck,end=' ')
+                userIDToSend = userIDCheck
+                print()
+        print(userNameToSend)
+        print(passwordToSend)
+        print(userIDToSend)
+        IDToPass = userIDToSend
         # userNameToDisplay = userNameToSend
         # print("Printed the name:")
         # print(userNameToDisplay)
+        
+        
        
         app.config.update(dict(DATABASE=os.path.join(app.root_path, 'db', 'project.db'),
                                SECRET_KEY='development key',
                                USERNAME=userNameToSend,
-                               PASSWORD=passwordToSend))
+                               PASSWORD=passwordToSend,USERID=userIDToSend))
         app.config.from_envvar('CARDS_SETTINGS', silent=True)
         if request.form['username'] != app.config['USERNAME']:
             error = 'Invalid username or password!'

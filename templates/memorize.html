@@ -39,13 +39,7 @@
                     <div class="alignContainer">
                         <div class="alignMiddle frontText">
                             {% if card.type == 1 %}
-                                {% if short_answer %}
-                                    <div class="text-center largerText">
-                                {% endif %}
-                                    {{ card.back|replace("\n", "<br />")|safe }}
-                                {% if short_answer %}
-                                    </div>
-                                {% endif %}
+                            {{ card.back|escape }}
                             {% else %}
                                 <pre><code>{{ card.back|escape }}</code></pre>
                             {% endif %}

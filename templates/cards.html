@@ -49,11 +49,11 @@
     <br />
     <br />
 
-    <table class="table table-bordered">
+    <table class="table table-bordered" style= "width:100%">
         {% for card in cards %}
             <tr>
-                <td>
-                    <a href="{{ url_for('edit', card_id=card.id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <td style= "width:10% ">
+                    <a href="{{ url_for('edit', card_id=card.id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil" aria-hidden="true" style="font-size:30px;color:red"></i></a>
                 </td>
                 <td class="cardContent">
                     <h4>

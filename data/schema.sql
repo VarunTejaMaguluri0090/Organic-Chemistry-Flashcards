@@ -1,6 +1,7 @@
 drop table if exists cards;
 DROP TABLE IF EXISTS users;
 create table cards (
+  userid string not null,
   id integer primary key autoincrement,
   type tinyint not null, /* 1 for vocab, 2 for formulae */
   front text not null,
