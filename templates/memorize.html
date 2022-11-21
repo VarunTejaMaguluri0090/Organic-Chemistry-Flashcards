@@ -37,10 +37,10 @@
             <div class="panel panel-primary cardBack">
                 <div class="panel-body">
                     <div class="alignContainer">
-                        <div class="alignMiddle frontText" id="InvertAgain">
+                        <div class="alignMiddle frontText"  id="InvertAgain">
                             <div class="text-center largerText">
                             {% if card.type == 1 %}
-                            {{ card.back|escape }}
+                            <pre><code>{{ card.back|escape }}</code></pre>
                             {% else %}
                                 <pre><code>{{ card.back|escape }}</code></pre>
                             {% endif %}

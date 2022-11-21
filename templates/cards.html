@@ -60,7 +60,7 @@
                         {{ card.front }}
                     </h4>
                     {% if card.type == 1 %}
-                        {{ card.back|replace("\n", "<br />")|safe }}
+                    <pre><code>{{ card.back|escape }}</code></pre>
                     {% else %}
                     <pre><code>{{ card.back|escape }}</code></pre>
                     {% endif %}
