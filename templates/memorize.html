@@ -24,7 +24,7 @@
             </div>
         </div>
         -->
-        <div class="col-xs-8 col-xs-offset-2">
+        <div class="flipContainer col-xs-8 col-xs-offset-2" id = "flipCards">
             <div class="panel panel-default cardFront">
                 <div class="panel-body">
                     <div class="alignContainer">
@@ -37,7 +37,8 @@
             <div class="panel panel-primary cardBack">
                 <div class="panel-body">
                     <div class="alignContainer">
-                        <div class="alignMiddle frontText">
+                        <div class="alignMiddle frontText" id="InvertAgain">
+                            <div class="text-center largerText">
                             {% if card.type == 1 %}
                             {{ card.back|escape }}
                             {% else %}

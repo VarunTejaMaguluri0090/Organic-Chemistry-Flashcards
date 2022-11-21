@@ -11,6 +11,15 @@ textarea {
     margin-top: 0;
 }
 
+.flipContainer {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+  
+.flipCardAnimation {
+  transform: rotateY(180deg);
+}
+
 .alignContainer {
     display: table;
     width: 100%;

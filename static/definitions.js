@@ -4,14 +4,20 @@ $(document).ready(function(){
         
 
         $('.flipCard').click(function(){
+            const cards = document.getElementById("flipCards");
+            cards.classList.toggle("flipCardAnimation");
             
             if ($('.cardFront').is(":visible") == true) {
                 
                 $('.cardFront').hide();
                 $('.cardBack').show();
+                const Inverts = document.getElementById("InvertAgain");
+                Inverts.classList.toggle("flipCardAnimation");
             } else {
                 $('.cardFront').show();
                 $('.cardBack').hide();
+                const Inverts = document.getElementById("InvertAgain");
+                Inverts.classList.toggle("flipCardAnimation");
             }
         });
     }
