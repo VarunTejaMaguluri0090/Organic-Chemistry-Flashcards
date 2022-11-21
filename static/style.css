@@ -7,8 +7,20 @@ textarea {
     font-family: sans-serif;
 }
 
+.table-bordered {
+  border: 2px solid rgb(12, 12, 12);
+}
+
+table {
+  background-color: whitesmoke;
+}
+
 .cardContent h4 {
     margin-top: 0;
+}
+
+.table-bordered>tbody>tr>td {
+  border: 2px solid rgb(4, 4, 4);
 }
 
 .flipContainer {
