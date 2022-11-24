@@ -308,9 +308,11 @@ def memorize(card_type, card_id):
     #     flash("You don't have any " + card_type + " flashcards to show")
         # return redirect(url_for('cards'))
     # short_answer = (len(card['back']) < 75)
+    userNameToDisplay = app.config['USERNAME']
+    print(userNameToDisplay)
     return render_template('memorize.html',
                            card=card,
-                           card_type=card_type)
+                           card_type=card_type,userNameToDisplayForApp=userNameToDisplay)
     # short_answer=short_answer
 
 
