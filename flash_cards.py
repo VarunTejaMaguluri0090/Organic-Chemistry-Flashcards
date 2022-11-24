@@ -2,6 +2,7 @@ import os
 import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from forms.RegistrationForm import RegistrationForm
+from data.model import db
 
 
 
@@ -66,7 +67,7 @@ def index():
     if session.get('logged_in'):
         return redirect(url_for('definitions'))
     else:
-        return redirect(url_for('login'))
+        return redirect(url_for('welcome'))
 
 
 def total_Cards():
@@ -91,7 +92,16 @@ def total_Cards():
     print(userNameToDisplay)
     render_template('cards.html', resultForTotalCards=resultForTotalCards,userNameToDisplayForApp=userNameToDisplay)
 
-
+@app.route('/welcome')
+def welcome():
+    return render_template("welcome.html",cards=db)
+@app.route("/card/<int:id>")
+def card_view(id): 
+    try:
+        card = db[index]
+        return render_template("card.html",card=card,index=index,max_index=len(db)-1)
+    except IndexError:
+        abort(404)
 @app.route('/cards')
 def cards():
     
