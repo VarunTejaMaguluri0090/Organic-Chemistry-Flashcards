@@ -2,7 +2,7 @@
 {% block body %}
 
     <div class="well editPanel">
-        <h2 style="float: left; width: 50%;">Add a card</h2>
+        <h2 style="float: left; width: 50%;">Add a Card</h2>
         <h2 style="float: right; width: 50%; text-align: right;">Your score</h2>
         <form action="{{ url_for('add_card') }}" method="post" class="cardForm">
             <div class="form-group">
@@ -32,7 +32,7 @@
                           
             </div>
             <div class="form-group"  style = "text-align: center;">
-                <button type="submit" class="saveButton btn btn-lg btn-primary">Save Flashcard</button>
+                <button type="submit" class="saveButton btn btn-lg btn-primary" style="background-color:#0096FF;color:white;font-weight: bold;">Save Flashcard</button>
             </div>
         </form>
     </div>
@@ -40,7 +40,7 @@
     <div class="page-header">
         <h2 style="color: #FFFFFF">{{ cards|length }} Card{{ '' if (cards|length == 1) else 's' }}{{ ' is available' if (cards|length == 1) else ' are available' }}</h2>
     </div>
-    <div class="btn-group btn-group-md" role="group" aria-label="filters">
+    <div class="btn-group btn-group-md" role="group" aria-label="filters" style="background-color:#0096FF;color:white;font-weight: bold;">
         <a href="{{ url_for('filter_cards', filter_name="all") }}" class="btn btn-{{ "primary" if filter_name == "all" else "default" }}">All</a>
         <a href="{{ url_for('filter_cards', filter_name="definitions") }}" class="btn btn-{{ "primary" if filter_name == "definitions" else "default" }}">Definitions</a>
         <a href="{{ url_for('filter_cards', filter_name="formulae") }}" class="btn btn-{{ "primary" if filter_name == "formulae" else "default" }}">Formulae</a>
@@ -71,7 +71,7 @@
         {% else %}
             <tr>
                 <td>
-                    <em style="color: black">No Flashcards to show</em>
+                    <em style="color: black">No Flashcards to Show</em>
                 </td>
             </tr>
         {% endfor %}

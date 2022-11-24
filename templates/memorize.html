@@ -77,7 +77,7 @@
             
             <a href="javascript:" class="btn btn-primary btn-lg flipCard">
                 <i class="fa fa-exchange"></i>
-                Flip card to view the answer
+                Flip Card
             </a>
             {% endif %}
             &nbsp;
@@ -90,7 +90,7 @@
             
             <a href="{{ url_for('mark_known', card_id=card.id, card_type=card_type) }}" class="btn btn-success btn-lg">
             <i class="fa fa-check"></i>
-            I Know this 
+            I Know this Card
             {% endif %}
            
             </a>
@@ -115,10 +115,11 @@
             {% if not card.id %}
 
             {% else %}
+              <!---
             <a href="{{ url_for(card_type, card_id=card.id) }}" class="btn btn-default btn-sm">
                 <i class="fa fa-bookmark"></i>
-                Bookmark this card (#{{ card.id }})
-            </a>
+              Bookmark this Card (#{{ card.id }})
+            </a> -->
             {% endif %}
         </div>
     </div>
