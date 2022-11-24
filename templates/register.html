@@ -3,7 +3,7 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<h2 style="color:white;text-align:center">Register</h2>
+<h2 style="color:white;text-align:center">User Registration</h2>
 {% if error %}
     <div class="alert alert-danger" role="alert">{{ error }}</div>
 {% endif %}
@@ -11,38 +11,38 @@
   <form method="POST" action="{{ url_for('register_user') }}">
     {{ form.csrf_token }}      
    
-    <div class="input-group input-group-lg">
+    <div class="input-group mb-3">
                 
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
       <input type="text" name="username" class="form-control" placeholder="Username">
                 
         </div>
         <br>
-        <div class="input-group input-group-lg">
+        <div class="input-group mb-3">
                 
           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
           <input type="email" name="email" class="form-control" placeholder="Email">      
         </div>
         <br>
-        <div class="input-group input-group-lg">
+        <div class="input-group mb-3">
                 
           <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
           <input type="password" name="password" class="form-control" placeholder="Password">      
         </div>
         <br>
-        <div class="input-group input-group-lg">
+        <div class="input-group mb-3">
                 
           <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
           <input type="password" name="password_confirm" class="form-control" placeholder="Confirm Password">     
         </div>
         <br>
-        <div class="input-group input-group-lg">
+        <div class="input-group mb-3">
                 
           <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
           <input type="text" name="location" class="form-control" placeholder="Your Location (e.g. City, Country)">
         </div>
         <br>
-         <div class="input-group input-group-lg">
+         <div class="input-group mb-3">
                 
           <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt" ></i></span>
           {{ form.description(class="form-control", rows="8", placeholder="Description") }}        
