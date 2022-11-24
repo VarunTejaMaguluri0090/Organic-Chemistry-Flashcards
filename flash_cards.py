@@ -87,7 +87,9 @@ def total_Cards():
     resultForTotalCards = cur.fetchone()[0]
     print("Total cards")
     print(resultForTotalCards)
-    render_template('cards.html', resultForTotalCards=resultForTotalCards)
+    userNameToDisplay = app.config['USERNAME']
+    print(userNameToDisplay)
+    render_template('cards.html', resultForTotalCards=resultForTotalCards,userNameToDisplayForApp=userNameToDisplay)
 
 
 @app.route('/cards')
@@ -185,7 +187,9 @@ def filter_cards(filter_name):
     resultForTotalKnownCount = curForTotalKnownCount.fetchone()[0]
     print("Total known cards")
     print(resultForTotalKnownCount)
-    return render_template('cards.html', cards=cards, filter_name=filter_name,resultForTotalCardsCount = resultForTotalCards,resultForKnownCards= resultForTotalKnownCount)
+    userNameToDisplay = app.config['USERNAME']
+    print(userNameToDisplay)
+    return render_template('cards.html', cards=cards, filter_name=filter_name,resultForTotalCardsCount = resultForTotalCards,resultForKnownCards= resultForTotalKnownCount,userNameToDisplayForApp=userNameToDisplay)
 
 
 @app.route('/add', methods=['POST'])
@@ -219,8 +223,10 @@ def edit(card_id):
         WHERE id = ? AND userid = ?
     '''
     cur = db.execute(query, [card_id,IDToPass])
+    userNameToDisplay = app.config['USERNAME']
+    print(userNameToDisplay)
     card = cur.fetchone()
-    return render_template('edit.html', card=card)
+    return render_template('edit.html', card=card,userNameToDisplayForApp=userNameToDisplay)
 
 
 @app.route('/edit_card', methods=['POST'])
@@ -283,7 +289,7 @@ def formulae(card_id=None):
 
 
 def memorize(card_type, card_id):
-    print("CARDID")
+    print("CARDID TO SHOW")
     print(card_id)
     if card_type == "definitions":
         type = 1
@@ -295,15 +301,18 @@ def memorize(card_type, card_id):
     if card_id:
         card = get_card_by_id(card_id)
     else:
+        
         card = get_card(type)
-    if not card:
-        flash("You've learned all the " + card_type + " flashcards")
-        return redirect(url_for('cards'))
-    short_answer = (len(card['back']) < 75)
+    # if not card:
+        
+    #     flash("You don't have any " + card_type + " flashcards to show")
+        # return redirect(url_for('cards'))
+    # short_answer = (len(card['back']) < 75)
     return render_template('memorize.html',
                            card=card,
-                           card_type=card_type,
-                           short_answer=short_answer)
+                           card_type=card_type)
+    # short_answer=short_answer
+
 
 
 def get_card(type):
@@ -351,10 +360,13 @@ def mark_known(card_id, card_type):
     db = get_db()
     IDToPass = str(app.config['USERID'])
     print(IDToPass)
-    db.execute('UPDATE cards SET known = 1 WHERE id = ? and userid = ?', [card_id,IDToPass])
-    db.commit()
-    flash('Card marked as known.')
-    return redirect(url_for(card_type))
+    print("CARDID1")
+    print(card_id)
+    if card_id != 0:
+        db.execute('UPDATE cards SET known = 1 WHERE id = ? and userid = ?', [card_id,IDToPass])
+        db.commit()
+        flash('Card marked as known.')
+        return redirect(url_for(card_type))
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -432,7 +444,7 @@ def login():
         else:
             session['logged_in'] = True
             session.permanent = True  # stay logged in
-            return redirect(url_for('cards'))
+            return redirect(url_for('home'))
  
 
     return render_template('login.html', error=error)
@@ -457,12 +469,33 @@ def register_user():
         return redirect(url_for('login')) 
     return render_template("register.html", form=form)
 
+@app.route('/home')
+def home():
+    
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    db = get_db()
+    userNameToDisplay = app.config['USERNAME']
+    print(userNameToDisplay)
+    return render_template('homepage.html',userNameToDisplayForApp=userNameToDisplay)
+
+
+@app.route('/add_card_Nav')
+def add_card_Nav():
+    
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    db = get_db()
+    userNameToDisplay = app.config['USERNAME']
+    print(userNameToDisplay)
+    return render_template('cards.html',userNameToDisplayForApp=userNameToDisplay)
 
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
     flash("You've logged out")
     return redirect(url_for('index'))
+
 
 
 if __name__ == '__main__':

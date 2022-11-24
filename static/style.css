@@ -71,5 +71,103 @@ table {
 .navbar-right {
   float: right!important;
 }
-.black { color: #070707; }
-.red { color: #FF0000; }
+.green { 
+  color: #04a31e; 
+  float: right; width: 50%; text-align: right;font-size: 25px;color: #FF0000;margin: 0;line-height: 30px;
+}
+.red { 
+  color: #FF0000; 
+  float: right; width: 50%; text-align: right;font-size: 25px;color: #FF0000;margin: 0;line-height: 30px;}
+
+  .block {
+    display: block;
+    width: 400px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    
+  }
+  .btn-group button {
+    
+    border: 1px solid green; /* Green border */
+    color: red; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    
+  }
+
+
+  
+  .btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+  }
+  
+  /* Clear floats (clearfix hack) */
+  .btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .btn-group button:hover {
+    background-color: #3e8e41;
+  }
+  .button-common {
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+    background-color: #808080;
+    font-family: 'Yanone Kaffeesatz';
+    font-weight: 700;
+    font-size: 2em;
+    display: block;
+    padding: 4px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 9px 0px rgba(219, 31, 5, 1), 0px 9px 25px rgba(0, 0, 0, .7);
+    -moz-box-shadow: 0px 9px 0px rgba(219, 31, 5, 1), 0px 9px 25px rgba(0, 0, 0, .7);
+    box-shadow: 0px 9px 0px rgba(219, 31, 5, 1), 0px 9px 25px rgba(0, 0, 0, .7);
+    width:33%;
+    height:370px;
+    text-align: center;
+    -webkit-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    -ms-transition: all .1s ease;
+    -o-transition: all .1s ease;
+    transition: all .1s ease;-webkit-box-shadow: 0px 3px 0px rgba(219, 31, 5, 1), 0px 3px 6px rgba(0, 0, 0, .9);
+    -moz-box-shadow: 0px 3px 0px rgba(219, 31, 5, 1), 0px 3px 6px rgba(0, 0, 0, .9);
+    box-shadow: 0px 3px 0px #808080, 0px 3px 6px rgba(0, 0, 0, .9);
+    position: relative;margin:1.8px; float: left;background-position: 50% 50%; background-size:230%;
+  }
+
+  .span-common{
+    border: 1px solid #ccc;
+    background:red;
+    padding: 5px 10px; position: absolute;
+    bottom: 0%;
+    width: 100%;
+    left: 0%;
+  }
+  
+  footer {
+    clear: both;
+    position: relative;
+    height: 200px;
+    margin-top: -200px;
+}
+.text-line {
+  background-color: transparent;
+  color: #eeeeee;
+  outline: none;
+  outline-style: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid #eeeeee 1px;
+  padding: 3px 10px;
+}
+
+.navbar {
+  height: 100px !important; /*i assume your navbar size 100px*/
+}

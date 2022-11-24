@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    
+
+  
     if ($('.memorizePanel').length != 0) {
         
 

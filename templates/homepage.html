@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div style = "width:100%">
+
+  <style>
+    a:link {
+       color: black;
+       background-color: transparent;
+       text-decoration: none;
+    }
+    a:visited {
+       color: black;
+       background-color: transparent;
+       text-decoration: none;
+    }
+    a:active {
+       color: lightblue;
+       background-color: transparent;
+    }
+
+    button{
+      color: black;
+      text-decoration: none;
+      background-color: #808080;
+      font-family: 'Yanone Kaffeesatz';
+      font-weight: 550;
+      font-size: 1.6em;
+      display: block;
+      padding: 4px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      -webkit-box-shadow: 0px 9px 0px #808080, 0px 9px 10px rgba(0, 0, 0, .7);
+      -moz-box-shadow: 0px 9px 0px #808080, 0px 9px 10px rgba(0, 0, 0, .7);
+      box-shadow: 0px 9px 0px #808080, 0px 9px 10px rgba(0, 0, 0, .7);
+     
+      width:33%;height:370px;
+      text-align: center;
+      -webkit-transition: all .1s ease;
+      -moz-transition: all .1s ease;
+      -ms-transition: all .1s ease;
+      -o-transition: all .1s ease;
+      transition: all .1s ease;-webkit-box-shadow: 0px 3px 0px #808080, 0px 3px 2px rgba(0, 0, 0, .9);
+      -moz-box-shadow: 0px 3px 0px #808080, 0px 3px 2px rgba(0, 0, 0, .9);
+      box-shadow: 0px 3px 0px red, 0px 3px 2px rgba(0, 0, 0, .9);
+      position: relative;margin:1.9px; float: left;
+    }
+    
+ </style>
+    
+  <button type="button" disabled style="background: url('https://i.ibb.co/MZ82BYR/0bd753a29409df55f332cbf69a5341ba.jpg');
+  background-position: 50% 50%; background-size:260%
+  "><span style="border: 1px solid #ccc;
+  background:lightcyan;
+  padding: 5px 10px; position: absolute;
+  bottom: -0.5%;
+  width: 100%;
+  left: 0%;"> <a href="{{ url_for('cards') }}">ADD CARDS</a><a href="{{ url_for('cards') }}"></a></button>
+
+  <button type="button" disabled style="background: url('https://i.ibb.co/h1sTqZ5/Chemical-Bond.jpg');
+  "><span style="border: 1px solid #ccc;
+  background:lightcyan;
+  padding: 5px 10px; position: absolute;
+  bottom:-0.5%;
+  width: 100%;
+  left: 0%;"><a href="{{ url_for('definitions') }}">VIEW CARDS</a></button>
+
+  <button type="button" disabled style="background: url('https://i.ibb.co/X42Jnp3/chemistrybanner.jpg');
+  background-position: 50% 50%; background-size:260%;
+  "><span style="border: 1px solid #ccc;
+  background:lightcyan;
+  padding: 5px 10px; position: absolute;
+  bottom: -0.5%;
+  width: 100%;
+  left: 0%;"><a href="{{ url_for('definitions') }}">EXPLORE MORE</a></button>
+
+  <button type="button" disabled style="background: url('https://i.ibb.co/LnYvhhZ/User-Profile-PNG-High-Quality-Image.png');
+  background-position: 50% 50%; background-size:170%;
+  "><span style="border: 1px solid #ccc;
+  background:lightcyan;
+  padding: 5px 10px; position: absolute;
+  bottom: -0.5%;
+  width: 100%;
+  left: 0%;"><a href="{{ url_for('definitions') }}">PROFILE</a></button>
+   
+   
+  </div>
+{% endblock %}

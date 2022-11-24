@@ -33,7 +33,7 @@ class RegistrationForm(FlaskForm):
                                          InputRequired("Input is required!"),
                                          DataRequired("Data is required!")
                                      ])
-    location = StringField("Your location (e.g. city, country)",
+    location = StringField("Your location (e.g. City, Country) *",
                            validators=[
                                InputRequired("Input is required!"),
                                DataRequired("Data is required!"),
