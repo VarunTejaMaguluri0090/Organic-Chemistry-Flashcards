@@ -3,7 +3,7 @@ from wtforms.fields import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import InputRequired, DataRequired, EqualTo, Length, ValidationError, Email
 
 
-class RegistrationForm(FlaskForm):
+class UpdateProfileForm(FlaskForm):
     username = StringField("Username *",
                            validators=[
                                InputRequired("Input is required!"),
@@ -33,18 +33,16 @@ class RegistrationForm(FlaskForm):
                                          InputRequired("Input is required!"),
                                          DataRequired("Data is required!")
                                      ])
-    location = StringField("City *",
+    location = StringField("Your location (e.g. City, Country) *",
                            validators=[
                                InputRequired("Input is required!"),
                                DataRequired("Data is required!"),
                                Length(
-                                   min=3, max=40, message="City must be between 3 and 40 characters long")
+                                   min=3, max=40, message="Location must be between 3 and 40 characters long")
                            ])
-    description = TextAreaField("State ",
+    description = TextAreaField("Description ",
                                 validators=[
-                                    InputRequired("Input is required!"),
-                                    DataRequired("Data is required!"),
                                     Length(
-                                        min==3, max=40, message="State must be between 3 and 40 characters long")
+                                        min=0, max=200, message="Description must be between 10 and 200 characters long")
                                 ])
     submit = SubmitField("Register")

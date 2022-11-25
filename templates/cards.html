@@ -3,7 +3,7 @@
 
     <div class="well editPanel">
         <h2 style="float: left; width: 50%;">Add a Card</h2>
-        <h2 style="float: right; width: 50%; text-align: right;">Your score</h2>
+        <h2 style="float: right; width: 50%; text-align: right;color: black;">Your score</h2>
         <form action="{{ url_for('add_card') }}" method="post" class="cardForm">
             <div class="form-group">
                 <label for="definitions" class="toggleButton btn btn-default btn-lg">Definitions &nbsp;
@@ -12,11 +12,8 @@
                 <label for="formulae" class="toggleButton btn btn-default btn-lg">Formulae &nbsp;
                     <input type="radio" name="type" value="2" id="formulae"/>
                 </label>
-                {% if resultForKnownCards ==  resultForTotalCardsCount and resultForKnownCards != 0 and resultForTotalCardsCount != 0 %}
-                <h2 style="float: right; width: 50%; text-align: right;font-size: 25px;color: #00A300;margin: 0;line-height: 30px;">{{ resultForKnownCards}} out of {{ resultForTotalCardsCount}}</h2>
-                {% else %}
-                <h2 style="float: right; width: 50%; text-align: right;font-size: 25px;color: #FF0000;margin: 0;line-height: 30px;">{{ resultForKnownCards}} out of {{ resultForTotalCardsCount}}</h2>
-                {% endif %}
+                <h2 style="float: right; width: 50%; text-align: right;font-size: 25px;color: black;margin: 0;line-height: 30px;">{{ resultForKnownCards}} out of {{ resultForTotalCardsCount}}</h2>
+                
             </div>
             <div class="form-group fieldFront">
                 <label for="front">Front of the Flashcard</label>
@@ -37,47 +34,5 @@
         </form>
     </div>
 
-    <div class="page-header">
-        <h2 style="color: #FFFFFF">{{ cards|length }} Card{{ '' if (cards|length == 1) else 's' }}{{ ' is available' if (cards|length == 1) else ' are available' }}</h2>
-    </div>
-    <div class="btn-group btn-group-md" role="group" aria-label="filters" style="background-color:#0096FF;color:white;font-weight: bold;">
-        <a href="{{ url_for('filter_cards', filter_name="all") }}" class="btn btn-{{ "primary" if filter_name == "all" else "default" }}">All</a>
-        <a href="{{ url_for('filter_cards', filter_name="definitions") }}" class="btn btn-{{ "primary" if filter_name == "definitions" else "default" }}">Definitions</a>
-        <a href="{{ url_for('filter_cards', filter_name="formulae") }}" class="btn btn-{{ "primary" if filter_name == "formulae" else "default" }}">Formulae</a>
-        <a href="{{ url_for('filter_cards', filter_name="known") }}" class="btn btn-{{ "primary" if filter_name == "known" else "default" }}">Known Flashcards</a>
-        <a href="{{ url_for('filter_cards', filter_name="unknown") }}" class="btn btn-{{ "primary" if filter_name == "unknown" else "default" }}">Unknown Flashcards</a>
-    </div>
-
-    <br />
-    <br />
-
-    <table class="table table-bordered" style= "width:100%">
-        {% for card in cards %}
-            <tr>
-                <td style= "width:10% ">
-                    <a href="{{ url_for('edit', card_id=card.id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil" aria-hidden="true" style="font-size:30px;color:white"></i></a>
-                </td>
-                <td class="cardContent">
-                    <h4>
-                        {{ card.front }}
-                    </h4>
-                    {% if card.type == 1 %}
-                    <pre><code>{{ card.back|escape }}</code></pre>
-                    {% else %}
-                    <pre><code>{{ card.back|escape }}</code></pre>
-                    {% endif %}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td>
-                    <em style="color: black">No Flashcards to Show</em>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-
-
-
-
+    
 {% endblock %}

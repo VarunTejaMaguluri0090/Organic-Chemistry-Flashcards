@@ -64,7 +64,27 @@
   padding: 5px 10px; position: absolute;
   bottom:-0.5%;
   width: 100%;
-  left: 0%;"><a href="{{ url_for('definitions') }}">VIEW CARDS</a></button>
+  left: 0%;"><a href="{{ url_for('my_cards') }}">MY CARDS</a></button>
+
+  <button type="button" disabled style="background: url('https://i.ibb.co/G0NvJWM/image-20160510-20731-1pf8nwv.jpg');
+  "><span style="border: 1px solid #ccc;
+  background:lightcyan;
+  padding: 5px 10px; position: absolute;
+  bottom:-0.5%;
+  width: 100%;
+  left: 0%;"><a href="{{ url_for('definitions') }}">TAKE QUIZ</a></button>
+  
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+  <button type="button" disabled style="background: url('https://i.ibb.co/gzXBQPc/a7d078c8b8d51a4ca4e34a9ec6e7ceed.jpg');
+  background-position: 50% 50%; background-size:143%;
+  "><span style="border: 1px solid #ccc;
+  background:lightcyan;
+  padding: 5px 10px; position: absolute;
+  bottom: -0.5%;
+  width: 100%;
+  left: 0%;"><a href="{{ url_for('get_profile') }}">PROFILE</a></button>
+   
+  
 
   <button type="button" disabled style="background: url('https://i.ibb.co/X42Jnp3/chemistrybanner.jpg');
   background-position: 50% 50%; background-size:260%;
@@ -75,15 +95,14 @@
   width: 100%;
   left: 0%;"><a href="{{ url_for('definitions') }}">EXPLORE MORE</a></button>
 
-  <button type="button" disabled style="background: url('https://i.ibb.co/LnYvhhZ/User-Profile-PNG-High-Quality-Image.png');
+  <button type="button" disabled style="background: url('https://i.ibb.co/dgMMmMY/history-magnifying-glass-focused-word-36388781.jpg');
   background-position: 50% 50%; background-size:170%;
   "><span style="border: 1px solid #ccc;
   background:lightcyan;
   padding: 5px 10px; position: absolute;
   bottom: -0.5%;
   width: 100%;
-  left: 0%;"><a href="{{ url_for('definitions') }}">PROFILE</a></button>
-   
-   
+  left: 0%;"><a href="{{ url_for('definitions') }}">HISTORY</a></button>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
   </div>
 {% endblock %}

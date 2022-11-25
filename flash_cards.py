@@ -2,6 +2,7 @@ import os
 import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from forms.RegistrationForm import RegistrationForm
+from forms.UpdateProfileForm import UpdateProfileForm
 from data.model import db
 
 
@@ -12,6 +13,12 @@ app.config.from_object(__name__)
 resultForTotalCards = 0
 userNameToDisplay = ''
 IDToPass = ''
+userNameForProfile = ''
+emailForProfile = ''
+passwordForProfile = ''
+cityForProfile = ''
+stateForProfile = ''
+arrayForUserData = []
 # Load default config and override config from an environment variable
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'db', 'project.db'),
@@ -165,7 +172,7 @@ def filter_cards(filter_name):
     query = filters.get(filter_name)
 
     if not query:
-        return redirect(url_for('cards'))
+        return redirect(url_for('home'))
 
     db = get_db()
     fullquery = "SELECT id, type, front, back, known FROM cards " + \
@@ -199,7 +206,7 @@ def filter_cards(filter_name):
     print(resultForTotalKnownCount)
     userNameToDisplay = app.config['USERNAME']
     print(userNameToDisplay)
-    return render_template('cards.html', cards=cards, filter_name=filter_name,resultForTotalCardsCount = resultForTotalCards,resultForKnownCards= resultForTotalKnownCount,userNameToDisplayForApp=userNameToDisplay)
+    return render_template('mycards.html', cards=cards, filter_name=filter_name,resultForTotalCardsCount = resultForTotalCards,resultForKnownCards= resultForTotalKnownCount,userNameToDisplayForApp=userNameToDisplay)
 
 
 @app.route('/add', methods=['POST'])
@@ -266,7 +273,7 @@ def edit_card():
                 ,IDToPass])
     db.commit()
     flash('Card saved.')
-    return redirect(url_for('cards'))
+    return redirect(url_for('my_cards'))
 
 
 @app.route('/delete/<card_id>')
@@ -279,7 +286,7 @@ def delete(card_id):
     db.execute('DELETE FROM cards WHERE id = ? AND userid = ?', [card_id,IDToPass])
     db.commit()
     flash('Card deleted.')
-    return redirect(url_for('cards'))
+    return redirect(url_for('my_cards'))
 
 
 @app.route('/definitions')
@@ -306,7 +313,7 @@ def memorize(card_type, card_id):
     elif card_type == "formulae":
         type = 2
     else:
-        return redirect(url_for('cards'))
+        return redirect(url_for('my_cards'))
 
     if card_id:
         card = get_card_by_id(card_id)
@@ -481,6 +488,90 @@ def register_user():
         return redirect(url_for('login')) 
     return render_template("register.html", form=form)
 
+@app.route("/get_profile")
+def get_profile():
+    #c = get_cursor()
+    arrayForUserData.clear()
+    form = RegistrationForm()
+    print(app.config['USERID'])
+    IDToPass = str(app.config['USERID'])
+    print(IDToPass)
+    db = get_db()
+    query = '''
+        SELECT *
+        FROM users
+        WHERE id = ?
+        ORDER BY id DESC
+       
+    '''
+    
+    for row in db.execute(query, (IDToPass,)).fetchall():
+        for userInfo in row:
+            print(userInfo,end=' ')
+            arrayForUserData.append(userInfo)
+            
+            print()
+        print(arrayForUserData)
+        usernameForProfile = arrayForUserData[1]
+        emailForProfile = arrayForUserData[2]
+        stateForProfile = arrayForUserData[3]
+        cityForProfile = arrayForUserData[4]
+        passwordForProfile = arrayForUserData[5]
+        
+    return render_template("profile.html", form=form,  usernameInProfile = usernameForProfile,emailInProfile = emailForProfile,stateInProfile = stateForProfile,cityInProfile = cityForProfile,passwordInProfile = passwordForProfile)
+
+
+
+
+@app.route("/updateProfile", methods=["POST"])
+def update_profile():
+    db = get_db()
+    IDToPass = str(app.config['USERID'])
+    print(IDToPass)
+    form = RegistrationForm()
+    print("Update Started")
+    command = '''
+        UPDATE users
+        SET
+          email = ?,
+          location = ?,
+          password = ?,
+          description = ?
+        WHERE id = ?
+    '''
+    db.execute(command,[request.form['email'],request.form['location'],request.form['password'],request.form['description'],IDToPass])
+    db.commit()
+    
+    
+    print("Update Ended")
+    flash('Your profile has been updated.',"success")
+    
+    db = get_db()
+    query = '''
+        SELECT *
+        FROM users
+        WHERE id = ?
+        ORDER BY id DESC
+       
+    '''
+    
+    for row in db.execute(query, (IDToPass,)).fetchall():
+        for userInfo in row:
+            print(userInfo,end=' ')
+            arrayForUserData.append(userInfo)
+            
+            print()
+        print(arrayForUserData)
+        usernameForProfile = arrayForUserData[1]
+        emailForProfile = arrayForUserData[2]
+        stateForProfile = arrayForUserData[3]
+        cityForProfile = arrayForUserData[4]
+        passwordForProfile = arrayForUserData[5]
+    return render_template("homepage.html",form=form)
+
+    
+
+
 @app.route('/home')
 def home():
     
@@ -501,6 +592,51 @@ def add_card_Nav():
     userNameToDisplay = app.config['USERNAME']
     print(userNameToDisplay)
     return render_template('cards.html',userNameToDisplayForApp=userNameToDisplay)
+
+@app.route('/my_cards')
+def my_cards():
+    
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    db = get_db()
+    query = '''
+        SELECT id, type, front, back, known,userid
+        FROM cards
+        WHERE userid = ?
+        ORDER BY id DESC
+       
+    '''
+    print("USERID IN CARDS")
+    print(app.config['USERID'])
+    IDToPass = str(app.config['USERID'])
+    print(IDToPass)
+    cur = db.execute(query,(IDToPass))
+    cards = cur.fetchall()
+    
+    dbForTotalCardsCount = get_db()
+    queryForTotalCardsCount = '''
+        SELECT COUNT(*) FROM cards
+        WHERE userid = ?
+    '''
+    curForTotalCardsCount = dbForTotalCardsCount.execute(queryForTotalCardsCount,(IDToPass))
+    resultForTotalCards = curForTotalCardsCount.fetchone()[0]
+    print("Total cards")
+    print(resultForTotalCards)
+    
+    dbForTotalKnownCount = get_db()
+    queryForTotalKnownCount = '''
+        SELECT COUNT(*) FROM cards
+        WHERE known = 1 AND userid = ?
+    '''
+    curForTotalKnownCount = dbForTotalKnownCount.execute(queryForTotalKnownCount,(IDToPass))
+    resultForTotalKnownCount = curForTotalKnownCount.fetchone()[0]
+    print("Total known cards")
+    print(resultForTotalKnownCount)
+    print("Printed Actuual name:")
+    userNameToDisplay = app.config['USERNAME']
+    print(userNameToDisplay)
+    return render_template('mycards.html', cards=cards, filter_name="all",resultForTotalCardsCount = resultForTotalCards,resultForKnownCards= resultForTotalKnownCount,userNameToDisplayForApp=userNameToDisplay)
+
 
 @app.route('/logout')
 def logout():
