@@ -23,8 +23,11 @@
 <table class="table table-bordered" style= "width:100%">
     {% for card in cards %}
         <tr>
-            <td style= "width:10% ">
-                <a href="{{ url_for('edit', card_id=card.id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil" aria-hidden="true" style="font-size:30px;color:white"></i></a>
+            <td style= "width:10%;text-align: center">
+                <a href="{{ url_for('edit', card_id=card.id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil fa_custom fa-1x" aria-hidden="true" style="font-size:37px;color:white;margin-top:10%;"></i></a>
+
+                <a href="{{ url_for('delete', card_id=card.id) }}" class="btn btn-danger btn-lg">
+                    <i class="fa fa-trash"></i></a>
             </td>
             <td class="cardContent">
                 <h4>

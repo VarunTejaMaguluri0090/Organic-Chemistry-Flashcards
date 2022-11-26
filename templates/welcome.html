@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layoutWelcomePage.html" %}
 {% block body %}
 <div class="row bg-light my-5" >
     <div id="myCarousel" class="carousel slide" data-mdb-interval="true" data-ride="carousel" >
@@ -53,8 +53,8 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-    <h1>Flashcards</h1>
-    <h3>Have fun Learning Organic Chemistry !</h3>
+    <h1  style="color:white">Flashcards</h1>
+    <h3 style="color:white">Have fun Learning Organic Chemistry !</h3>
     </div>
     <div class="row">
         <div class="col-9">
@@ -71,8 +71,8 @@
     <div class="row">
       <div class="my-4">
         <a href="{{ url_for('explore_cards', id = 0 )}}"
-            class="btn btn-primary btn-lg btn-sm active" role="button" aria-pressed="true">
-            Explore More
+            class="btn btn-primary btn-lg btn-sm active" role="button" aria-pressed="true" >
+            Explore
         </a>
       </div>
     </div>
