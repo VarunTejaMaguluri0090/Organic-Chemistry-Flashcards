@@ -1,1 +1,5 @@
 db/project.db
+data/__pycache__/model.cpython-310.pyc
+data/__pycache__/model.cpython-310.pyc
+forms/__pycache__/RegistrationForm.cpython-310.pyc
+forms/__pycache__/UpdateProfileForm.cpython-310.pyc
