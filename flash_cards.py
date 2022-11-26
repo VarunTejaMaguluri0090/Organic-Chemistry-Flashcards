@@ -76,6 +76,17 @@ def index():
     else:
         return redirect(url_for('welcome'))
 
+@app.route('/explore/<int:id>')
+def explore_cards(id): 
+    from data.model import db
+    if id < len(db):
+        card = db[id] 
+    else:
+        id = 0
+        card = db[id]
+    return render_template("explorecards.html",card = card,card_type = card['type'], next_id = id+1)
+
+
 
 def total_Cards():
     

@@ -2,12 +2,12 @@ import json
 
 
 def load_db():
-    with open("data/flashcards_db.json", "r") as f:
+    with open("data/chemistry_flashcards.json", "r") as f:
         return json.load(f)
 
 
 def save_db():
-    with (open("data/flashcards_db.json", "w")) as f:
+    with (open("data/chemistry_flashcards.json", "w")) as f:
         return json.dump(db, f)
 
 
