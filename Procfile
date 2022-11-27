@@ -1,1 +1,1 @@
-"web: gunicorn app:flash_cards" 
+"web: gunicorn flash_cards:app" 
