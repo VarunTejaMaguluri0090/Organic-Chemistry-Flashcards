@@ -4,7 +4,7 @@ from flask import Flask, request, session, g, redirect, url_for, abort, render_t
 from forms.RegistrationForm import RegistrationForm
 from forms.UpdateProfileForm import UpdateProfileForm
 from data.model import db
-
+import json
 
 
 
@@ -87,14 +87,36 @@ def explore_cards(id):
     return render_template("explorecards.html",card = card,card_type = card['type'], next_id = id+1)
 
 
+@app.route('/explore_cards/')
+def explore_cards_after_login():
+    with open("data/explore_cards.json", "r") as f:
+        explore_cards = json.load(f)
+
+    db = get_db()
+    query = '''
+        SELECT type, front, back
+        FROM cards
+        WHERE userid = ?
+        ORDER BY id DESC'''
+    
+    IDToPass = str(app.config['USERID'])
+    cur = db.execute(query,(IDToPass))
+    my_cards = cur.fetchall()
+    existing_cards = set()
+    for card in my_cards:
+        existing_cards.add((str(card[0]), str(card[1]), str(card[2])))
+    new_cards = []
+    for card in explore_cards:
+        find = (str(card['type']),str(card['front']),str( card['back']))
+        if find in existing_cards:
+           continue 
+        new_cards.append(card)    
+    return render_template('explorecards_after_login.html', cards = new_cards)
 
 def total_Cards():
     
     if not session.get('logged_in'):
         return redirect(url_for('login'))
-
-    
-
     db = get_db()
     query = '''
         SELECT COUNT(*) FROM cards
@@ -113,6 +135,7 @@ def total_Cards():
 @app.route('/welcome')
 def welcome():
     return render_template("welcome.html",cards=db)
+
 @app.route("/card/<int:id>")
 def card_view(id): 
     try:
@@ -120,9 +143,9 @@ def card_view(id):
         return render_template("card.html",card=card,index=index,max_index=len(db)-1)
     except IndexError:
         abort(404)
+
 @app.route('/cards')
 def cards():
-    
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     db = get_db()
@@ -237,6 +260,19 @@ def add_card():
     flash('New card was added successfully')
     return redirect(url_for('cards'))
 
+@app.route('/add_card_explore/<type>/<front>/<back>')
+def add_card_explore(type, front, back):
+    db = get_db()
+    IDToPass = str(app.config['USERID'])
+    print(type, front, back)
+    db.execute('INSERT INTO cards (userid, type, front, back) VALUES (?,?, ?, ?)',  
+               [IDToPass,type,
+                front,
+                back
+                ])
+    db.commit()
+    flash('Added Card')
+    return redirect(url_for("explore_cards_after_login"))
 
 @app.route('/edit/<card_id>')
 def edit(card_id):
