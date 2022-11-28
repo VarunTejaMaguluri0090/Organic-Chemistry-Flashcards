@@ -15,30 +15,33 @@
           <div class="item active" style = "width: 100%;
           height: 100%;
           object-fit: cover;">
-            <img src="https://i.ibb.co/9gJQRbL/abstract-hexagon-pattern-dark-blue-background-medical-and-science-concept-molecular-structures-free.jpg" alt="Add Cards">
+            <img src="https://i.ibb.co/9gJQRbL/abstract-hexagon-pattern-dark-blue-background-medical-and-science-concept-molecular-structures-free.jpg" alt="Add Cards" style = "filter: blur(2px);
+            -webkit-filter: blur(2px);">
             <div class="carousel-caption">
-              <h3>Add Cards</h3>
-              <p>Add Cards content here!</p>
+              <h3 style = "font-size: 30px;">Add Cards</h3>
+              <p style = "font-size: 25px;">Add the flashcards of your choice related to organic chemistry either it can be a definition or a formula and use those flashcards to conduct a quiz for yourself.</p>
             </div>
           </div>
           
           <div class="item" style = "width: 100%;
           height: 100%;
           object-fit: cover;">
-            <img src="https://i.ibb.co/HNDQDRP/0bd753a29409df55f332cbf69a5341ba.jpg">
+            <img src="https://i.ibb.co/HNDQDRP/0bd753a29409df55f332cbf69a5341ba.jpg" style = "filter: blur(4px);
+            -webkit-filter: blur(4px);">
             <div class="carousel-caption">
-              <h3>View Cards</h3>
-              <p>View Cards content here!</p>
+              <h3 style = "font-size: 30px;">View Cards</h3>
+              <p style = "font-size: 25px;">Check the flashcards that you have created and can edit the content anytime. You can even mark the particular flashcards if you are familiar with the card.</p>
             </div>
           </div>
       
           <div class="item" style = "width: 100%;
           height: 100%;
           object-fit: cover;">
-            <img src="https://i.ibb.co/GVjd9TL/209924128.jpg" alt="Take Quiz">
+            <img src="https://i.ibb.co/GVjd9TL/209924128.jpg" alt="Take Quiz" style = "filter: blur(4px);
+            -webkit-filter: blur(4px);">
             <div class="carousel-caption">
-              <h3>Take Quiz</h3>
-              <p>Take Quiz content here!!</p>
+              <h3 style = "font-size: 30px;">Take Quiz</h3>
+              <p style = "font-size: 25px;">Once you have added the flashcards, you can conduct a quiz to yourself and get to know your score and assess your knowledge.</p>
             </div>
           </div>
         </div>
@@ -53,16 +56,17 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;</p> 
+      <div class="well editPanel">
     <h1>Flashcards</h1>
     <h3>Have fun Learning Organic Chemistry !</h3>
-    </div>
+   
     <div class="row">
         <div class="col-9">
             <div class="my-4">
                 <blockquote class="blockquote mb-0">
-                    <p>The best digital flashcards and study tools for Organic Chemistry.<br>
-                        Join over 60 million students using science-backed flashcards, 
-                        practice tests and expert solutions to improve their grades and reach their goals.
+                    <p>The best digital flashcards and study tool for Organic Chemistry. Join us and explore a new way of learning chemistry to excel your knowledge and improve your skills in a fully digital way. <br>
+                        Click the Explore button below to see the sample flashcards!
                     </p>
                 </blockquote>
              </div>
@@ -71,10 +75,12 @@
     <div class="row">
       <div class="my-4">
         <a href="{{ url_for('explore_cards', id = 0 )}}"
-            class="btn btn-primary btn-lg btn-sm active" role="button" aria-pressed="true" >
+            class="btn btn-primary btn-lg btn-lg active" role="button" aria-pressed="true" >
             Explore
         </a>
       </div>
-      <p>&nbsp;&nbsp;&nbsp;&nbsp;</p> 
     </div>
+  </div>
+</div>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;</p> 
 {% endblock %}
