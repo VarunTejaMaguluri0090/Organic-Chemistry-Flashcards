@@ -271,7 +271,7 @@ def add_card_explore(type, front, back):
                 back
                 ])
     db.commit()
-    flash('Added Card')
+    flash('Card is added to your MyCards portal')
     return redirect(url_for("explore_cards_after_login"))
 
 @app.route('/edit/<card_id>')
@@ -684,6 +684,17 @@ def my_cards():
     print(userNameToDisplay)
     return render_template('mycards.html', cards=cards, filter_name="all",resultForTotalCardsCount = resultForTotalCards,resultForKnownCards= resultForTotalKnownCount,userNameToDisplayForApp=userNameToDisplay)
 
+@app.route('/reser_cards')
+def reser_cards():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    db = get_db()
+    IDToPass = str(app.config['USERID'])
+    print(IDToPass)
+    db.execute('UPDATE cards SET known = 0 WHERE  userid = ?', [IDToPass])
+    db.commit()
+    flash('Cards has been reset.')
+    return redirect(url_for('my_cards'))
 
 @app.route('/logout')
 def logout():
