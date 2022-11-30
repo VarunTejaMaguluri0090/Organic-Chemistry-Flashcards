@@ -1,3 +1,4 @@
+
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, SubmitField, BooleanField, RadioField, TextAreaField, EmailField
 from wtforms.validators import InputRequired, DataRequired, EqualTo, Length, ValidationError, Email
@@ -31,20 +32,23 @@ class RegistrationForm(FlaskForm):
     password_confirm = PasswordField("Confirm Password *",
                                      validators=[
                                          InputRequired("Input is required!"),
-                                         DataRequired("Data is required!")
+                                         DataRequired("Data is required!"),
+                                         Length(
+                                             min=4, max=40, message="Password must be between 10 and 40 characters long"),
+                                         EqualTo("password",
+                                                 message="Passwords must match")
+                                         
                                      ])
-    location = StringField("City *",
+    location = StringField("Your location (e.g. city, country)",
                            validators=[
                                InputRequired("Input is required!"),
                                DataRequired("Data is required!"),
                                Length(
-                                   min=3, max=40, message="City must be between 3 and 40 characters long")
+                                   min=3, max=40, message="Location must be between 3 and 40 characters long")
                            ])
-    description = TextAreaField("State ",
+    description = TextAreaField("State *",
                                 validators=[
-                                    InputRequired("Input is required!"),
-                                    DataRequired("Data is required!"),
                                     Length(
-                                        min==3, max=40, message="State must be between 3 and 40 characters long")
+                                        min=2, max=20, message="Description must be between 3 and 20 characters long")
                                 ])
     submit = SubmitField("Register")

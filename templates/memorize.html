@@ -26,28 +26,28 @@
         -->
         
         <div class="flipContainer col-xs-8 col-xs-offset-2" id = "flipCards">
-            <div class="panel panel-default cardFront" style="background-color:#F3E779;">
+            <div class="panel panel-default cardFront" style="background-color:#d9edf7;">
                 <div class="panel-body">
                     <div class="alignContainer">
                         <div class="alignMiddle frontText">
                             {% if not card.id %}
-                            <h2 class="text-center" style="color: #FF0000;"> 0 Cards found for {{card_type}} </h2>
+                            <h2 class="text-center" style="color: #FF0000;font-weight: bold;font-size: 1.3em;"> 0 Cards found for {{card_type}} </h2>
                             {% else %}
-                            <h3 class="text-center">{{ card.front }}</h3>
+                            <h3 class="text-center" style="font-weight: bold;font-size: 1.3em;">{{ card.front }}</h3>
                             {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="panel panel-primary cardBack" style="background-color:#F3E779;">
+            <div class="panel panel-primary cardBack" style="background-color:#d9edf7;">
                 <div class="panel-body">
                     <div class="alignContainer">
                         <div class="alignMiddle frontText"  id="InvertAgain">
                             <div class="text-center largerText">
                             {% if card.type == 1 %}
-                            <pre><code>{{ card.back|escape }}</code></pre>
+                            <pre><code style="font-weight: bold;font-size: 1.3em;">{{ card.back|escape }}</code></pre>
                             {% else %}
-                                <pre><code>{{ card.back|escape }}</code></pre>
+                                <pre><code style="font-weight: bold;font-size: 1.3em;">{{ card.back|escape }}</code></pre>
                             {% endif %}
                         </div>
                     </div>

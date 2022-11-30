@@ -2,7 +2,6 @@ import os
 import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from forms.RegistrationForm import RegistrationForm
-from forms.UpdateProfileForm import UpdateProfileForm
 from data.model import db
 import json
 
@@ -101,6 +100,7 @@ def explore_cards_after_login():
     
     IDToPass = str(app.config['USERID'])
     cur = db.execute(query,(IDToPass))
+    db.commit()
     my_cards = cur.fetchall()
     existing_cards = set()
     for card in my_cards:
@@ -443,31 +443,32 @@ def login():
     userIDToSend = ''
     if request.method == 'POST':
         db = get_db()
+        queryToGetUserName = '''
+        SELECT username
+        from users
         
-        
-        queryToGetUserName = """\
-            SELECT username
-            FROM users
-            WHERE username = ? 
-            LIMIT 1
-            """
-        userName = request.form['username']
+        WHERE username = ? AND password = ?
+    '''
        
-        for row in db.execute(queryToGetUserName, (userName,)).fetchall():
+       
+        for row in db.execute(queryToGetUserName,[request.form['username'],
+                request.form['password']]).fetchall():
             for username in row:
                 print(username,end=' ')
                 userNameToSend = username
                 print()
-                
-        queryToGetPassword = """\
-            SELECT password
-            FROM users
-            WHERE password = ?
-            LIMIT 1
-            """
-        password = request.form['password']
+        db.commit()    
+           
+        queryToGetPassword = '''
+        SELECT password
+        from users
+        
+        WHERE password = ? AND username = ?
+    '''
        
-        for row in db.execute(queryToGetPassword, (password,)).fetchall():
+       
+        for row in db.execute(queryToGetPassword, [request.form['password'],
+                request.form['username']]).fetchall():
             for passwordToCheck in row:
                 print(passwordToCheck,end=' ')
                 passwordToSend = passwordToCheck
@@ -475,15 +476,16 @@ def login():
         print(userNameToSend)
         print(passwordToSend)
         
-        queryToGetUserID = """\
-            SELECT id
-            FROM users
-            WHERE username = ?
-            LIMIT 1
-            """
+        queryToGetUserID =  '''
+        SELECT id
+        from users
+        
+        WHERE username = ? AND password = ?
+    '''
        
        
-        for row in db.execute(queryToGetUserID, (userName,)).fetchall():
+        for row in db.execute(queryToGetUserID, [request.form['username'],
+                request.form['password']]).fetchall():
             for userIDCheck in row:
                 print(userIDCheck,end=' ')
                 userIDToSend = userIDCheck

@@ -13,39 +13,45 @@
    
     <div class="input-group mb-3">
                 
-      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input type="text" name="username" class="form-control" placeholder="Username">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user" ></i></span>
+      {{ form.username(class="form-control",placeholder="Username") }}
                 
         </div>
         <br>
         <div class="input-group mb-3">
                 
           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-          <input type="email" name="email" class="form-control" placeholder="Email">      
+          {{ form.email(class="form-control",placeholder="Email") }}    
         </div>
         <br>
         <div class="input-group mb-3">
                 
           <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-          <input type="password" name="password" class="form-control" placeholder="Password">      
+          {{ form.password(class="form-control",placeholder="Password" ) }}    
+          
+
         </div>
         <br>
         <div class="input-group mb-3">
                 
           <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-          <input type="password" name="password_confirm" class="form-control" placeholder="Confirm Password">     
+          {{ form.password_confirm(class="form-control",placeholder="Confirm Password") }}   
+           
+
+             
         </div>
         <br>
         <div class="input-group mb-3">
                 
           <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-          <input type="text" name="location" class="form-control" placeholder="City">
+          {{ form.location(class="form-control",placeholder="City") }}  
         </div>
         <br>
          <div class="input-group mb-3">
                 
           <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker" ></i></span>
-          <input type="text" name="description" class="form-control" placeholder="State">       
+          {{ form.description(class="form-control",placeholder="State") }}  
+
         </div>
       
         <hr>

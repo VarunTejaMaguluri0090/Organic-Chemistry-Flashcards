@@ -10,7 +10,7 @@
    
    
 </div>
-<div class="btn-group btn-group-md" role="group" aria-label="filters" style="background-color:#0096FF;color:white;font-weight: bold;">
+<div class="btn-group btn-group-md" role="group" aria-label="filters" style="background-color:#0096FF;color:white;font-weight: bold;font-size: 1.3em;">
     <a href="{{ url_for('filter_cards', filter_name="all") }}" class="btn btn-{{ "primary" if filter_name == "all" else "default" }}">All</a>
     <a href="{{ url_for('filter_cards', filter_name="definitions") }}" class="btn btn-{{ "primary" if filter_name == "definitions" else "default" }}">Definitions</a>
     <a href="{{ url_for('filter_cards', filter_name="formulae") }}" class="btn btn-{{ "primary" if filter_name == "formulae" else "default" }}">Formulae</a>
@@ -29,7 +29,7 @@
 <table class="table table-bordered" style= "width:100%">
     {% for card in cards %}
         <tr>
-            <td style= "width:10%;text-align: center">
+            <td style= "width:10%;text-align: center;font-weight: normal;">
                 <a href="{{ url_for('edit', card_id=card.id) }}" class="btn btn-xs btn-primary"><i class="fa fa-pencil fa_custom fa-1x" aria-hidden="true" style="font-size:37px;color:white;margin-top:10%;"></i></a>
 
                 <a href="{{ url_for('delete', card_id=card.id) }}" class="btn btn-danger btn-lg">
@@ -40,16 +40,16 @@
                     {{ card.front }}
                 </h4>
                 {% if card.type == 1 %}
-                <pre><code>{{ card.back|escape }}</code></pre>
+                <pre><code style= "width:10%;text-align: center;font-weight: normal;font-size: 1.3em;color:black">{{ card.back|escape }}</code></pre>
                 {% else %}
-                <pre><code>{{ card.back|escape }}</code></pre>
+                <pre><code style= "width:10%;text-align: center;font-weight: normal;font-size: 1.3em;color:black">{{ card.back|escape }}</code></pre>
                 {% endif %}
             </td>
         </tr>
     {% else %}
         <tr>
             <td>
-                <em style="color: black">No Flashcards to Show</em>
+                <em style= "width:10%;text-align: center;font-weight: normal;font-size: 1.3em;color:black">No Flashcards to Show</em>
             </td>
         </tr>
     {% endfor %}

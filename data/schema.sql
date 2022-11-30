@@ -1,6 +1,5 @@
-drop table if exists cards;
-DROP TABLE IF EXISTS users;
-create table cards (
+
+create table if not EXISTS cards (
   userid string not null,
   id integer primary key autoincrement,
   type tinyint not null, /* 1 for vocab, 2 for formulae */
@@ -9,7 +8,7 @@ create table cards (
   known boolean default 0
 );
 
-CREATE TABLE users(
+CREATE TABLE if not EXISTS users(
                     id              INTEGER PRIMARY KEY AUTOINCREMENT,
                     username        TEXT NOT NULL UNIQUE,
                     email           STRING NOT NULL UNIQUE,
