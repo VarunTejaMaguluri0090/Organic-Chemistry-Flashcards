@@ -38,7 +38,7 @@
 
                         <ul class="nav navbar-nav navbar-right">
                             {% if not session.logged_in %}
-                                <li><a href="{{ url_for('login') }}" style="font-size: 20px;"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+                                <li><a href="{{ url_for('user_login') }}" style="font-size: 20px;"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
                                 <li><a href="{{ url_for('register_user') }}" style="font-size: 20px;"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                             </ul> 
                             {% else %}

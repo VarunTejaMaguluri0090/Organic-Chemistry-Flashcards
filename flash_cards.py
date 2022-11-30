@@ -2,6 +2,7 @@ import os
 import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, render_template, flash
 from forms.RegistrationForm import RegistrationForm
+from forms.LoginForm import LoginForm
 from data.model import db
 import json
 
@@ -116,7 +117,7 @@ def explore_cards_after_login():
 def total_Cards():
     
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
+        return redirect(url_for('user_login'))
     db = get_db()
     query = '''
         SELECT COUNT(*) FROM cards
@@ -147,7 +148,7 @@ def card_view(id):
 @app.route('/cards')
 def cards():
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
+        return redirect(url_for('user_login'))
     db = get_db()
     query = '''
         SELECT id, type, front, back, known,userid
@@ -192,7 +193,7 @@ def cards():
 def filter_cards(filter_name):
     total_Cards()
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
+        return redirect(url_for('user_login'))
 
     filters = {
         "all":      "where 1 = 1 and userid = ?",
@@ -246,7 +247,7 @@ def filter_cards(filter_name):
 @app.route('/add', methods=['POST'])
 def add_card():
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
+        return redirect(url_for('user_login'))
     db = get_db()
     IDToPass = str(app.config['USERID'])
     print(IDToPass)
@@ -277,7 +278,7 @@ def add_card_explore(type, front, back):
 @app.route('/edit/<card_id>')
 def edit(card_id):
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
+        return redirect(url_for('user_login'))
     db = get_db()
     IDToPass = str(app.config['USERID'])
     print(IDToPass)
@@ -296,7 +297,7 @@ def edit(card_id):
 @app.route('/edit_card', methods=['POST'])
 def edit_card():
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
+        return redirect(url_for('user_login'))
     selected = request.form.getlist('known')
     known = bool(selected)
     db = get_db()
@@ -326,7 +327,7 @@ def edit_card():
 @app.route('/delete/<card_id>')
 def delete(card_id):
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
+        return redirect(url_for('user_login'))
     db = get_db()
     IDToPass = str(app.config['USERID'])
     print(IDToPass)
@@ -340,7 +341,7 @@ def delete(card_id):
 @app.route('/definitions/<card_id>')
 def definitions(card_id=None):
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
+        return redirect(url_for('user_login'))
     return memorize("definitions", card_id)
 
 
@@ -348,7 +349,7 @@ def definitions(card_id=None):
 @app.route('/formulae/<card_id>')
 def formulae(card_id=None):
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
+        return redirect(url_for('user_login'))
     return memorize("formulae", card_id)
 
 
@@ -422,7 +423,7 @@ def get_card_by_id(card_id):
 @app.route('/mark_known/<card_id>/<card_type>')
 def mark_known(card_id, card_type):
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
+        return redirect(url_for('user_login'))
     db = get_db()
     IDToPass = str(app.config['USERID'])
     print(IDToPass)
@@ -436,12 +437,13 @@ def mark_known(card_id, card_type):
 
 
 @app.route('/login', methods=['GET', 'POST'])
-def login():
+def user_login():
     error = None
     userNameToSend = ''
     passwordToSend = ''
     userIDToSend = ''
-    if request.method == 'POST':
+    form = LoginForm()
+    if form.validate_on_submit():
         db = get_db()
         queryToGetUserName = '''
         SELECT username
@@ -515,7 +517,7 @@ def login():
             return redirect(url_for('home'))
  
 
-    return render_template('login.html', error=error)
+    return render_template('login.html', error=error, form=form)
 
 
 
@@ -534,7 +536,7 @@ def register_user():
                 ])
         db.commit()
         flash('You are registered. Please proceed to login.',"success")
-        return redirect(url_for('login')) 
+        return redirect(url_for('user_login')) 
     return render_template("register.html", form=form)
 
 @app.route("/get_profile")
@@ -625,7 +627,7 @@ def update_profile():
 def home():
     
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
+        return redirect(url_for('user_login'))
     db = get_db()
     userNameToDisplay = app.config['USERNAME']
     print(userNameToDisplay)
@@ -636,7 +638,7 @@ def home():
 def add_card_Nav():
     
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
+        return redirect(url_for('user_login'))
     db = get_db()
     userNameToDisplay = app.config['USERNAME']
     print(userNameToDisplay)
@@ -646,7 +648,7 @@ def add_card_Nav():
 def my_cards():
     
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
+        return redirect(url_for('user_login'))
     db = get_db()
     query = '''
         SELECT id, type, front, back, known,userid
@@ -689,7 +691,7 @@ def my_cards():
 @app.route('/reser_cards')
 def reser_cards():
     if not session.get('logged_in'):
-        return redirect(url_for('login'))
+        return redirect(url_for('user_login'))
     db = get_db()
     IDToPass = str(app.config['USERID'])
     print(IDToPass)
