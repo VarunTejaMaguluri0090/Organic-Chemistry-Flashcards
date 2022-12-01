@@ -1,6 +1,7 @@
 # CMPE272-Team6-Final-Project
 
 #Running Locally
+
 1. Install dependencies:
 2. Install Python
 3. Add python as environment variable windows
@@ -13,3 +14,9 @@
 10. Then open http://127.0.0.1:5000/login
 11. Enjoy your time with our application!
 
+#Running on browser
+
+The application is presently hosted on AWS at http://ec2-13-57-6-52.us-west-1.compute.amazonaws.com/welcome
+and on Render at https://organic-chemistry-flashcards.onrender.com/welcome
+
+Do have a look and let us know !
