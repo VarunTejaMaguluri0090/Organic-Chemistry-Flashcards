@@ -525,19 +525,54 @@ def user_login():
 def register_user():
     #c = get_cursor()
     form = RegistrationForm()
-    if form.validate_on_submit(): 
+    if form.validate_on_submit():
+        name = request.form['username']
+        email = request.form['email']
+        usernameCounter = 0
+        emailCounter = 0
         db = get_db()
-        db.execute('INSERT INTO users (username, email, description, location, password) VALUES (?, ?, ?, ?, ?)',
+        query = '''
+        SELECT * FROM users
+        WHERE username = ?
+    '''
+        usernameToget = db.execute(query, [name])
+        print(usernameToget)
+        for row in usernameToget.fetchall():
+            usernameCounter = row[0]
+            print("username")
+            print(usernameCounter)
+            
+        query2 = '''
+        SELECT * FROM users
+        WHERE  email = ?
+    '''
+        emailToget = db.execute(query2, [email])
+        print(emailToget)
+        for row in emailToget.fetchall():
+            emailCounter = row[0]
+            print("Email")
+            print(emailCounter)
+        if usernameCounter > 0:
+            flash("The username " +"'" +name+ "'"+" is already taken, please choose another one")
+            return render_template('register.html', form=form)
+        
+        if emailCounter > 0:
+            flash("The email " +"'" +email+ "'"+" is already taken, please choose another one")
+            return render_template('register.html', form=form)
+        
+        else: 
+            db.execute('INSERT INTO users (username, email, description, location, password) VALUES (?, ?, ?, ?, ?)',
                [request.form['username'],
                 request.form['email'],
                 request.form['description'],
                 request.form['location'],
                 request.form['password'],
                 ])
-        db.commit()
-        flash('You are registered. Please proceed to login.',"success")
-        return redirect(url_for('user_login')) 
+            db.commit()
+            flash('You are registered. Please proceed to login.',"success")
+            return redirect(url_for('user_login')) 
     return render_template("register.html", form=form)
+
 
 @app.route("/get_profile")
 def get_profile():
