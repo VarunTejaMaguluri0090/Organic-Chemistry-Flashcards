@@ -1,915 +1,468 @@
 [{
-    "id":"1",
-    "type":"1",
+    "id": 1,
+    "type": 1,
     "front": "Atoms with the same atomic number but different masses (same number of protons, but different number of neutrons)",
     "back": "isotopes"
-},
-
-{
-    "id":"2",
-    "type":"1",
+  },
+  {
+    "id": 2,
+    "type": 1,
     "front": "Hybrid atomic orbitals that arise from the combination of one s orbital and two p orbitals",
     "back": "sp²"
-},
-
-{
-    "id":"3",
-    "type":"1",
+  },
+  {
+    "id": 3,
+    "type": 1,
     "front": "Hybrid atomic orbitals that arise from the combination of one s orbital and three p orbitals",
     "back": "sp³"
-},
-
-{
-    "id":"4",
-    "type":"1",
-    "front": "Conceptually, combining atomic orbitals to obtain hybrid atomic orbitals in a way that facilitates the description of bonding within a molecule",
-    "back": "hybridization"
-},
-
-{
-    "id":"5",
-    "type":"1",
+  },
+  {
+    "id": 4,
+    "type": 1,
     "front": "A bond formed by sideways overlap of atomic orbitals, resulting in electron density above and below a line between the two nuclei",
     "back": "pi bond (π bond)"
-},
-
-{
-    "id":"6",
-    "type":"1",
+  },
+  {
+    "id": 5,
+    "type": 1,
     "front": "A bond formed by end-on overlap of two atomic orbitals along a line between the two nuclei",
     "back": "sigma bond (σ bond)"
-},
-
-{
-    "id":"6",
-    "type":"1",
+  },
+  {
+    "id": 6,
+    "type": 1,
     "front": "Valence electrons that are not involved in bonding",
     "back": "lone pair (non-bonding electrons)"
-},
-
-{
-    "id":"7",
-    "type":"1",
+  },
+  {
+    "id": 7,
+    "type": 1,
     "front": "The tendency for main group elements, eg. C, N, O, to attain eight electrons in their valence shells",
     "back": "octet rule"
-},
-
-{
-    "id":"8",
-    "type":"1",
+  },
+  {
+    "id": 8,
+    "type": 1,
     "front": "Two atoms share a pair of electrons",
     "back": "covalent bond"
-},
-
-{
-    "id":"9",
-    "type":"1",
+  },
+  {
+    "id": 9,
+    "type": 1,
     "front": "Arrangement of four groups around a central atom, with maximum distance between them (~ 109.5° bond angles)",
     "back": "tetrahedral"
-},
-
-{
-    "id":"10",
-    "type":"1",
+  },
+  {
+    "id": 10,
+    "type": 1,
     "front": "A single, unchanging structure which can be represented by multiple resonance structures (forms)",
     "back": "resonance hybrid"
-},
-
-{
-    "id":"11",
-    "type":"1",
+  },
+  {
+    "id": 11,
+    "type": 1,
     "front": "Alternate structure diagrams for a molecule which can be interconverted by shifting only π and non-bonding valence electrons",
     "back": "resonance structures (resonance forms)"
-},
-
-{
-    "id":"12",
-    "type":"1",
+  },
+  {
+    "id": 12,
+    "type": 1,
     "front": "In a structure diagram, the charge associated with an atom which does not possess the appropriate number of valence electrons",
     "back": "formal charge"
-},
-
-{
-    "id":"13",
-    "type":"1",
-    "front": "A characteristic group of atoms and/or bonds that have predictable chemical behaviors",
-    "back": "functional group"
-},
-
-{
-    "id":"14",
-    "type":"1",
+  },
+  {
+    "id": 13,
+    "type": 1,
     "front": "A structure diagram that avoids explicitly showing carbon atoms and hydrogen atoms that are attached to carbon",
     "back": "line-bond structure (bond-line structure)"
-},
-
-{
-    "id":"15",
-    "type":"1",
+  },
+  {
+    "id": 14,
+    "type": 1,
     "front": "A structure diagram that shows no bonds, instead implying bonds by clustering atoms and groups of atoms together",
     "back": "condensed structure"
-},
-
-{
-    "id":"16",
-    "type":"1",
+  },
+  {
+    "id": 15,
+    "type": 1,
     "front": "A structure diagram that shows bonds as pairs of dots or lines between two atoms, and non-bonded (lone pair) electrons as pairs of dots",
     "back": "Lewis structure"
-},
-
-{
-    "id":"17",
-    "type":"1",
+  },
+  {
+    "id": 16,
+    "type": 1,
     "front": "Arrangement of two groups around a central atom, with maximum distance between them (~ 180° bond angles)",
     "back": "linear"
-},
-
-{
-    "id":"18",
-    "type":"1",
+  },
+  {
+    "id": 17,
+    "type": 1,
     "front": "Arrangement of three groups around a central atom, with maximum distance between them (~ 120° bond angles)",
     "back": "trigonal planar"
-},
-
-{
-    "id":"19",
-    "type":"1",
-    "front": "Arrangement of four groups around a central atom, with maximum distance between them (~ 109.5° bond angles)",
-    "back": "tetrahedral"
-},
-
-{
-    "id":"20",
-    "type":"1",
+  },
+  {
+    "id": 18,
+    "type": 1,
     "front": "Conceptually, combining atomic orbitals to obtain hybrid atomic orbitals in a way that facilitates the description of bonding within a molecule",
     "back": "hybridization"
-},
-
-{
-    "id":"21",
-    "type":"1",
+  },
+  {
+    "id": 19,
+    "type": 1,
     "front": "Hard and soft acids and bases",
     "back": "HSAB theory (Pearson acid-base theory)"
-},
-
-{
-    "id":"22",
-    "type":"1",
+  },
+  {
+    "id": 20,
+    "type": 1,
     "front": "An electron pair donor",
     "back": "Lewis base"
-},
-
-{
-    "id":"23",
-    "type":"1",
+  },
+  {
+    "id": 21,
+    "type": 1,
     "front": "An electron pair acceptor",
     "back": "Lewis acid"
-},
-
-{
-    "id":"24",
-    "type":"1",
+  },
+  {
+    "id": 22,
+    "type": 1,
     "front": "A species with separate positively and negatively charged groups",
     "back": "zwitterion"
-},
-
-{
-    "id":"25",
-    "type":"1",
+  },
+  {
+    "id": 23,
+    "type": 1,
     "front": "A negatively charged species",
     "back": "anion"
-},
-
-{
-    "id":"26",
-    "type":"1",
-    "front": "Valence electrons that are not involved in bonding",
-    "back": "lone pair (non-bonding electrons)"
-},
-
-{
-    "id":"27",
-    "type":"1",
-    "front": "The tendency for main group elements, eg. C, N, O, to attain eight electrons in their valence shells",
-    "back": "octet rule"
-},
-
-{
-    "id":"28",
-    "type":"1",
-    "front": "Two atoms share a pair of electrons",
-    "back": "covalent bond"
-},
-
-{
-    "id":"29",
-    "type":"1",
+  },
+  {
+    "id": 24,
+    "type": 1,
     "front": "A positively charged species",
     "back": "cation"
-},
-
-{
-    "id":"30",
-    "type":"1",
+  },
+  {
+    "id": 25,
+    "type": 1,
     "front": "A substance with a high pKa",
     "back": "weak acid"
-},
-
-{
-    "id":"31",
-    "type":"1",
+  },
+  {
+    "id": 26,
+    "type": 1,
     "front": "A substance with a low pKa",
     "back": "strong acid"
-},
-
-{
-    "id":"32",
-    "type":"1",
+  },
+  {
+    "id": 27,
+    "type": 1,
     "front": "The product formed when a base gains a proton",
     "back": "conjugate acid"
-},
-
-{
-    "id":"33",
-    "type":"1",
+  },
+  {
+    "id": 28,
+    "type": 1,
     "front": "The product formed when an acid loses a proton",
     "back": "conjugate base"
-},
-
-{
-    "id":"34",
-    "type":"1",
+  },
+  {
+    "id": 29,
+    "type": 1,
     "front": "A substance that accepts a proton (H+)",
     "back": "base"
-},
-
-{
-    "id":"35",
-    "type":"1",
+  },
+  {
+    "id": 30,
+    "type": 1,
     "front": "A substance that donates a proton (H+)",
     "back": "acid"
-},
-
-{
-    "id":"36",
-    "type":"1",
-    "front": "A structure diagram that shows bonds as pairs of dots or lines between two atoms, and non-bonded (lone pair) electrons as pairs of dots",
-    "back": "Lewis structure"
-},
-
-{
-    "id":"37",
-    "type":"1",
-    "front": "Arrangement of two groups around a central atom, with maximum distance between them (~ 180° bond angles)",
-    "back": "linear"
-},
-
-{
-    "id":"38",
-    "type":"1",
-    "front": "Arrangement of three groups around a central atom, with maximum distance between them (~ 120° bond angles)",
-    "back": "trigonal planar"
-},
-
-{
-    "id":"39",
-    "type":"1",
-    "front": "Arrangement of four groups around a central atom, with maximum distance between them (~ 109.5° bond angles)",
-    "back": "tetrahedral"
-},
-
-{
-    "id":"40",
-    "type":"1",
-    "front": "A single, unchanging structure which can be represented by multiple resonance structures (forms)",
-    "back": "resonance hybrid"
-},
-
-{
-    "id":"41",
-    "type":"1",
-    "front": "Alternate structure diagrams for a molecule which can be interconverted by shifting only π and non-bonding valence electrons",
-    "back": "resonance structures (resonance forms)"
-},
-
-{
-    "id":"42",
-    "type":"1",
-    "front": "In a structure diagram, the charge associated with an atom which does not possess the appropriate number of valence electrons",
-    "back": "formal charge"
-},
-
-{
-    "id":"43",
-    "type":"1",
-    "front": "A characteristic group of atoms and/or bonds that have predictable chemical behaviors",
-    "back": "functional group"
-},
-
-{
-    "id":"44",
-    "type":"1",
-    "front": "A structure diagram that avoids explicitly showing carbon atoms and hydrogen atoms that are attached to carbon",
-    "back": "line-bond structure (bond-line structure)"
-},
-
-{
-    "id":"45",
-    "type":"1",
-    "front": "A structure diagram that shows no bonds, instead implying bonds by clustering atoms and groups of atoms together",
-    "back": "condensed structure"
-},
-
-{
-    "id":"46",
-    "type":"1",
-    "front": "A structure diagram that shows bonds as pairs of dots or lines between two atoms, and non-bonded (lone pair) electrons as pairs of dots",
-    "back": "Lewis structure"
-},
-
-{
-    "id":"47",
-    "type":"1",
-    "front": "Arrangement of two groups around a central atom, with maximum distance between them (~ 180° bond angles)",
-    "back": "linear"
-},
-
-{
-    "id":"48",
-    "type":"1",
-    "front": "Arrangement of three groups around a central atom, with maximum distance between them (~ 120° bond angles)",
-    "back": "trigonal planar"
-},
-
-{
-    "id":"49",
-    "type":"1",
-    "front": "Arrangement of four groups around a central atom, with maximum distance between them (~ 109.5° bond angles)",
-    "back": "tetrahedral"
-},
-{
-    "id":"50",
-    "type":"1",
+  },
+  {
+    "id": 31,
+    "type": 1,
     "front": "a chemical reaction between an alcohol and an acid to produce an ester and water",
     "back": "esterification"
-},
-
-{
-    "id":"51",
-    "type":"1",
+  },
+  {
+    "id": 32,
+    "type": 1,
     "front": "an organic compound containing both the amine group (-NH2) and the carboxyl group (-COOH)",
     "back": "amino acid"
-},
-
-{
-    "id":"52",
-    "type":"1",
+  },
+  {
+    "id": 33,
+    "type": 1,
     "front": "an ammonia derivative in which one or more of the hydrogen atoms are replaced by an alkyl group",
     "back": "amine"
-},
-
-{
-    "id":"53",
-    "type":"1",
+  },
+  {
+    "id": 34,
+    "type": 1,
     "front": "the product obtained from the reaction of an organic acid with an amine",
     "back": "amide"
-},
-
-{
-    "id":"54",
-    "type":"1",
+  },
+  {
+    "id": 35,
+    "type": 1,
     "front": "one of a homologous series of hydrocarbons that contain one triple covalent bond",
     "back": "alkyne"
-},
-
-{
-    "id":"55",
-    "type":"1",
+  },
+  {
+    "id": 36,
+    "type": 1,
     "front": "one of a homologous series of hydrocarbons that contain one double covalent bond",
     "back": "alkene"
-},
-
-{
-    "id":"56",
-    "type":"1",
+  },
+  {
+    "id": 37,
+    "type": 1,
     "front": "one of a homologous series of saturated hydrocarbons (CnH2n+2)",
     "back": "alkane"
-},
-
-{
-    "id":"57",
-    "type":"1",
+  },
+  {
+    "id": 38,
+    "type": 1,
     "front": "an organic compound in which the carbonyl group (-C=O) is at the end of a carbon chain",
     "back": "aldehyde"
-},
-
-{
-    "id":"58",
-    "type":"1",
+  },
+  {
+    "id": 39,
+    "type": 1,
     "front": "an organic compound containing the hydroxyl group (-OH) as the functional group",
     "back": "alcohol"
-},
-
-{
-    "id":"59",
-    "type":"1",
+  },
+  {
+    "id": 40,
+    "type": 1,
     "front": "an organic reaction in which a substance such as hydrogen or a halogen is added to the site of a double or triple bond in an organic molecule",
     "back": "addition reaction"
-},
-
-{
-    "id":"60",
-    "type":"1",
-    "front": "A substance with a high pKa",
-    "back": "weak acid"
-},
-
-{
-    "id":"61",
-    "type":"1",
-    "front": "A substance with a low pKa",
-    "back": "strong acid"
-},
-
-{
-    "id":"62",
-    "type":"1",
-    "front": "The product formed when a base gains a proton",
-    "back": "conjugate acid"
-},
-
-{
-    "id":"63",
-    "type":"1",
-    "front": "The product formed when an acid loses a proton",
-    "back": "conjugate base"
-},
-
-{
-    "id":"64",
-    "type":"1",
-    "front": "A substance that accepts a proton (H+)",
-    "back": "base"
-},
-
-{
-    "id":"65",
-    "type":"1",
-    "front": "A substance that donates a proton (H+)",
-    "back": "acid"
-},
-
-{
-    "id":"66",
-    "type":"1",
-    "front": "A structure diagram that shows bonds as pairs of dots or lines between two atoms, and non-bonded (lone pair) electrons as pairs of dots",
-    "back": "Lewis structure"
-},
-
-{
-    "id":"67",
-    "type":"1",
-    "front": "Arrangement of two groups around a central atom, with maximum distance between them (~ 180° bond angles)",
-    "back": "linear"
-},
-
-{
-    "id":"68",
-    "type":"1",
-    "front": "Arrangement of three groups around a central atom, with maximum distance between them (~ 120° bond angles)",
-    "back": "trigonal planar"
-},
-
-{
-    "id":"69",
-    "type":"1",
-    "front": "Arrangement of four groups around a central atom, with maximum distance between them (~ 109.5° bond angles)",
-    "back": "tetrahedral"
-},
-
-{
-    "id":"70",
-    "type":"2",
+  },
+  {
+    "id": 41,
+    "type": 2,
     "front": "Strontium phosphate",
     "back": "Sr₃(PO₄)₂"
-},
-
-{
-    "id":"71",
-    "type":"2",
+  },
+  {
+    "id": 42,
+    "type": 2,
     "front": "Carbon monoxide",
     "back": "CO"
-},
-
-{
-    "id":"72",
-    "type":"2",
+  },
+  {
+    "id": 43,
+    "type": 2,
     "front": "Copper (I) hydroxide",
     "back": "CuOH"
-},
-
-{
-    "id":"73",
-    "type":"2",
+  },
+  {
+    "id": 44,
+    "type": 2,
     "front": "Magnesium phosphide",
     "back": "Mg₃P₂"
-},
-
-{
-    "id":"74",
-    "type":"2",
+  },
+  {
+    "id": 45,
+    "type": 2,
     "front": "Copper (II) nitrite",
     "back": "Cu(NO₂)₂"
-},
-
-{
-    "id":"75",
-    "type":"2",
+  },
+  {
+    "id": 46,
+    "type": 2,
     "front": "Lithium hydride",
     "back": "LiH"
-},
-
-{
-    "id":"76",
-    "type":"2",
+  },
+  {
+    "id": 47,
+    "type": 2,
     "front": "Nitric Acid",
     "back": "HNO₃"
-},
-
-{
-    "id":"77",
-    "type":"2",
+  },
+  {
+    "id": 48,
+    "type": 2,
     "front": "Beryllium sulfide",
     "back": "BeS"
-},
-
-{
-    "id":"78",
-    "type":"2",
+  },
+  {
+    "id": 49,
+    "type": 2,
     "front": "Potassium permanganate",
     "back": "KMnO₄"
-},
-
-{
-    "id":"79",
-    "type":"2",
+  },
+  {
+    "id": 50,
+    "type": 2,
     "front": "Potassium dichromate",
     "back": "K₂Cr₂O₇"
-},
-
-{
-    "id":"80",
-    "type":"2",
+  },
+  {
+    "id": 51,
+    "type": 2,
     "front": "Iron (III) hydroxide",
     "back": "Fe(OH)₃"
-},
-
-{
-    "id":"81",
-    "type":"2",
+  },
+  {
+    "id": 52,
+    "type": 2,
     "front": "Lead (IV) oxide",
     "back": "PbO₂"
-},
-
-{
-    "id":"82",
-    "type":"2",
+  },
+  {
+    "id": 53,
+    "type": 2,
     "front": "Carbon dioxide",
     "back": "CO₂"
-},
-
-{
-    "id":"83",
-    "type":"2",
+  },
+  {
+    "id": 54,
+    "type": 2,
     "front": "Tin (IV) bromide",
     "back": "SnBr₄"
-},
-
-{
-    "id":"84",
-    "type":"2",
+  },
+  {
+    "id": 55,
+    "type": 2,
     "front": "Aluminum oxide",
     "back": "Al₂O₃"
-},
-
-{
-    "id":"85",
-    "type":"2",
+  },
+  {
+    "id": 56,
+    "type": 2,
     "front": "Silver nitrate",
     "back": "AgNO₃"
-},
-
-{
-    "id":"86",
-    "type":"2",
+  },
+  {
+    "id": 57,
+    "type": 2,
     "front": "Carbon tetrachloride",
     "back": "CCl₄"
-},
-
-{
-    "id":"87",
-    "type":"2",
+  },
+  {
+    "id": 58,
+    "type": 2,
     "front": "Sodium cyanide",
     "back": "NaCN"
-},
-
-{
-    "id":"88",
-    "type":"2",
+  },
+  {
+    "id": 59,
+    "type": 2,
     "front": "Copper (II) sulfide",
     "back": "CuS"
-},
-
-{
-    "id":"89",
-    "type":"2",
+  },
+  {
+    "id": 60,
+    "type": 2,
     "front": "Iodic Acid",
     "back": "HIO₃"
-},
-
-{
-    "id":"90",
-    "type":"2",
+  },
+  {
+    "id": 61,
+    "type": 2,
     "front": "Zinc chloride",
     "back": "ZnCl₂"
-},
-
-{
-    "id":"91",
-    "type":"2",
+  },
+  {
+    "id": 62,
+    "type": 2,
     "front": "Hydrofluoric Acid",
     "back": "HF"
-},
-
-{
-    "id":"92",
-    "type":"2",
+  },
+  {
+    "id": 63,
+    "type": 2,
     "front": "Barium sulfide",
     "back": "BaS"
-},
-
-{
-    "id":"93",
-    "type":"2",
+  },
+  {
+    "id": 64,
+    "type": 2,
     "front": "Ammonium chromate",
     "back": "(NH₄)₂CrO₄"
-},
-
-{
-    "id":"94",
-    "type":"2",
+  },
+  {
+    "id": 65,
+    "type": 2,
     "front": "Mercury (I) oxide",
     "back": "Hg₂O"
-},
-
-{
-    "id":"95",
-    "type":"2",
+  },
+  {
+    "id": 66,
+    "type": 2,
     "front": "Calcium bicarbonate",
     "back": "Ca(HCO₃)₂"
-},
-
-{
-    "id":"96",
-    "type":"2",
+  },
+  {
+    "id": 67,
+    "type": 2,
     "front": "Iron (II) oxide",
     "back": "FeO"
-},
-
-{
-    "id":"97",
-    "type":"2",
+  },
+  {
+    "id": 68,
+    "type": 2,
     "front": "Ammonium Nitrate",
     "back": "NH₄NO₃"
-},
-
-{
-    "id":"98",
-    "type":"2",
+  },
+  {
+    "id": 69,
+    "type": 2,
     "front": "Manganese (IV) oxide",
     "back": "MnO₂"
-},
-
-{
-    "id":"99",
-    "type":"2",
+  },
+  {
+    "id": 70,
+    "type": 2,
     "front": "Hydroiodic Acid",
     "back": "HI"
-},
-
-{
-    "id":"100",
-    "type":"2",
-    "front": "Silver nitrate",
-    "back": "AgNO₃"
-},
-
-{
-    "id":"101",
-    "type":"2",
+  },
+  {
+    "id": 71,
+    "type": 2,
     "front": "Phosphoric Acid",
     "back": "H₃PO₄"
-},
-
-{
-    "id":"102",
-    "type":"2",
+  },
+  {
+    "id": 72,
+    "type": 2,
     "front": "Copper (I) oxide",
     "back": "Cu₂O"
-},
-
-{
-    "id":"103",
-    "type":"2",
+  },
+  {
+    "id": 73,
+    "type": 2,
     "front": "Sulfur dioxide",
     "back": "SO₂"
-},
-
-{
-    "id":"104",
-    "type":"2",
+  },
+  {
+    "id": 74,
+    "type": 2,
     "front": "Aluminum hypochlorate",
     "back": "Al(ClO)₃"
-},
-
-{
-    "id":"105",
-    "type":"2",
+  },
+  {
+    "id": 75,
+    "type": 2,
     "front": "Magnesium sulfide",
     "back": "MgS"
-},
-
-{
-    "id":"106",
-    "type":"2",
+  },
+  {
+    "id": 76,
+    "type": 2,
     "front": "Cobalt bisulfate",
     "back": "Co(HSO₄)₂"
-},
-
-{
-    "id":"107",
-    "type":"2",
-    "front": "Aluminum oxide",
-    "back": "Al₂O₃"
-},
-
-{
-    "id":"108",
-    "type":"2",
-    "front": "Silver nitrate",
-    "back": "AgNO₃"
-},
-
-{
-    "id":"109",
-    "type":"2",
-    "front": "Carbon tetrachloride",
-    "back": "CCl₄"
-},
-
-{
-    "id":"110",
-    "type":"2",
-    "front": "Carbon tetrachloride",
-    "back": "CCl₄"
-},
-
-{
-    "id":"111",
-    "type":"2",
-    "front": "Sodium cyanide",
-    "back": "NaCN"
-},
-
-{
-    "id":"112",
-    "type":"2",
-    "front": "Copper (II) sulfide",
-    "back": "CuS"
-},
-
-{
-    "id":"113",
-    "type":"2",
-    "front": "Iodic Acid",
-    "back": "HIO₃"
-},
-
-{
-    "id":"114",
-    "type":"2",
-    "front": "Zinc chloride",
-    "back": "ZnCl₂"
-},
-
-{
-    "id":"115",
-    "type":"2",
-    "front": "Hydrofluoric Acid",
-    "back": "HF"
-},
-
-{
-    "id":"116",
-    "type":"2",
-    "front": "Barium sulfide",
-    "back": "BaS"
-},
-
-{
-    "id":"117",
-    "type":"2",
-    "front": "Ammonium chromate",
-    "back": "(NH₄)₂CrO₄"
-},
-
-{
-    "id":"118",
-    "type":"2",
-    "front": "Mercury (I) oxide",
-    "back": "Hg₂O"
-},
-
-{
-    "id":"119",
-    "type":"2",
+  },
+  {
+    "id": 77,
+    "type": 2,
     "front": "Sodium oxalate",
     "back": "Na₂C₂O₄"
-},
-
-{
-    "id":"120",
-    "type":"2",
+  },
+  {
+    "id": 78,
+    "type": 2,
     "front": "Nitrogen dioxide",
     "back": "NO₂"
-},
-
-{
-    "id":"121",
-    "type":"2",
-    "front": "Phosphoric Acid",
-    "back": "H₃PO₄"
-},
-
-{
-    "id":"122",
-    "type":"2",
-    "front": "Copper (I) oxide",
-    "back": "Cu₂O"
-},
-
-{
-    "id":"123",
-    "type":"2",
-    "front": "Sulfur dioxide",
-    "back": "SO₂"
-},
-
-{
-    "id":"124",
-    "type":"2",
-    "front": "Aluminum hypochlorate",
-    "back": "Al(ClO)₃"
-},
-
-{
-    "id":"125",
-    "type":"2",
-    "front": "Magnesium sulfide",
-    "back": "MgS"
-},
-
-{
-    "id":"126",
-    "type":"2",
-    "front": "Cobalt bisulfate",
-    "back": "Co(HSO₄)₂"
-},
-
-{
-    "id":"127",
-    "type":"2",
-    "front": "Aluminum oxide",
-    "back": "Al₂O₃"
-},
-
-{
-    "id":"128",
-    "type":"2",
-    "front": "Silver nitrate",
-    "back": "AgNO₃"
-},
-
-{
-    "id":"129",
-    "type":"2",
-    "front": "Carbon tetrachloride",
-    "back": "CCl₄"
-},
-
-{
-    "id":"130",
-    "type":"2",
-    "front": "Sulfur dioxide",
-    "back": "SO₂"
-}]
+  }]

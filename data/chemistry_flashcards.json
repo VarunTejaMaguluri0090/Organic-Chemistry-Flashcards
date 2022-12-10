@@ -85,19 +85,12 @@
 {
     "id":"13",
     "type":"1",
-    "front": "A characteristic group of atoms and/or bonds that have predictable chemical behaviors",
-    "back": "functional group"
-},
-
-{
-    "id":"14",
-    "type":"1",
     "front": "A structure diagram that avoids explicitly showing carbon atoms and hydrogen atoms that are attached to carbon",
     "back": "line-bond structure (bond-line structure)"
 },
 
 {
-    "id":"15",
+    "id":"14",
     "type":"1",
     "front": "A structure diagram that shows no bonds, instead implying bonds by clustering atoms and groups of atoms together",
     "back": "condensed structure"
