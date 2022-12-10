@@ -552,13 +552,14 @@ def register_user():
             emailCounter = row[0]
             print("Email")
             print(emailCounter)
+            
         if usernameCounter > 0:
-            flash("The username " +"'" +name+ "'"+" is already taken, please choose another one")
-            return render_template('register.html', form=form)
+            error = "The username " +"'" +name+ "'"+" is already taken, please choose another one"
+            return render_template('register.html',error=error, form=form)
         
         if emailCounter > 0:
-            flash("The email " +"'" +email+ "'"+" is already taken, please choose another one")
-            return render_template('register.html', form=form)
+            error = "The email " +"'" +email+ "'"+" is already taken, please choose another one"
+            return render_template('register.html',error=error, form=form)
         
         else: 
             db.execute('INSERT INTO users (username, email, description, location, password) VALUES (?, ?, ?, ?, ?)',
