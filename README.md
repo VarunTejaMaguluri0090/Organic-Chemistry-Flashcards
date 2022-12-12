@@ -16,7 +16,6 @@
 
 #Running on browser
 
-The application is presently hosted on AWS at http://ec2-13-57-6-52.us-west-1.compute.amazonaws.com/welcome
-and on Render at https://organic-chemistry-flashcards.onrender.com/welcome
+The application is presently hosted on Render at https://organic-chemistry-flashcards.onrender.com/welcome
 
 Do have a look and let us know !
