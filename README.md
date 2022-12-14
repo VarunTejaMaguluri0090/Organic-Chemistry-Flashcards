@@ -12,7 +12,8 @@
 8. Type python flash_cards.py - if you get error for flask then use python -m pip install Flask first then run flash_card.py file
 9. Open http://127.0.0.1:5000/initdb
 10. Then open http://127.0.0.1:5000/login
-11. Enjoy your time with our application!
+11. For a better experience, run our application in Google Chrome browser.
+12. Enjoy your time with our application!
 
 #Running on browser
 
