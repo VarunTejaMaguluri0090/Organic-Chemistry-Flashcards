@@ -1,12 +1,15 @@
-version: '3'
+# version: '3'
 
-services:
+# services:
 
-  cs-flash-cards:
-    build: .
-    ports:
-      - 8000:8000
-    volumes:
-      - ./cards-empty.db:/src/db/cards.db
-#      - ./cards-jwasham-extreme.db:/src/db/cards.db
-#      - ./cards-jwasham.db:/src/db/cards.db
+#   cs-flash-cards:
+#     build: .
+#     ports:
+#       - 8000:8000
+#     volumes:
+#       - ./cards-empty.db:/src/db/cards.db
+# #      - ./cards-jwasham-extreme.db:/src/db/cards.db
+# #      - ./cards-jwasham.db:/src/db/cards.db
+
+
+runtime: python39
